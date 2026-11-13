@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Watto · Bozza testi landing page</title>
+<style>
+  :root{
+    --ink:#111;
+    --text:#333;
+    --muted:#6b6b6b;
+    --line:#d9d9d9;
+    --ph:#ececec;
+    --ph-ink:#b3b3b3;
+    --soft:#f6f6f6;
+    --red:#d40000;
+    --red-bg:#fff1f1;
+    --radius:14px;
+    --max:1160px;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{color:var(--ink);line-height:1.2;margin:0 0 .5em}
+  h1{font-size:clamp(2rem,4.2vw,3.1rem);letter-spacing:-.02em}
+  h2{font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:-.015em}
+  h3{font-size:1.15rem}
+  p{margin:0 0 1em}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  section.alt{background:var(--soft)}
+  .center{text-align:center}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:720px}
+  .center .lead{margin-left:auto;margin-right:auto}
+  .eyebrow{font-size:.95rem;font-weight:600;color:var(--muted);margin-bottom:.8em}
+
+  /* Segnaposto rossi */
+  .todo{color:var(--red);font-weight:600}
+  .todo-box{border:2px dashed var(--red);background:var(--red-bg);color:var(--red);border-radius:var(--radius);padding:20px;font-weight:600}
+  .verify{color:var(--red);font-size:.85rem;font-weight:600;display:block;margin-top:.4em}
+
+  /* Barra bozza */
+  .draftbar{background:var(--ink);color:#fff;font-size:.9rem;padding:10px 0}
+  .draftbar .wrap{display:flex;gap:8px 24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .draftbar b{color:#fff}
+  .legend{display:flex;align-items:center;gap:8px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--red)}
+  .legend span{color:#ff8a8a;font-weight:600}
+
+  /* Placeholder immagini */
+  .ph{background:var(--ph);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--ph-ink);font-size:.85rem;font-weight:600;text-align:center;padding:12px;position:relative;overflow:hidden}
+  .ph svg{width:56px;height:56px;opacity:.7}
+  .ph .cap{position:absolute;bottom:12px;left:12px;right:12px;font-size:.8rem}
+  .ph.round{border-radius:50%}
+
+  /* Bottoni */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 26px;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;border:2px solid var(--ink);background:var(--ink);color:#fff;font-family:inherit;transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.ghost{background:#fff;color:var(--ink)}
+  .btn.sm{padding:9px 18px;font-size:.92rem}
+  .btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #7a7a7a;outline-offset:3px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .micro{font-size:.9rem;color:var(--muted);margin-top:14px}
+
+  /* Header */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-weight:800;font-size:1.35rem;color:var(--ink);text-decoration:none;border:2px solid var(--ink);padding:4px 14px;border-radius:8px;letter-spacing:.04em}
+  .mainnav{display:flex;gap:28px;font-size:.95rem;font-weight:600}
+  .mainnav a{text-decoration:none;color:var(--text)}
+  .mainnav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+  section[id]{scroll-margin-top:80px}
+  .head-actions{display:flex;align-items:center;gap:10px}
+  .wa-icon{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;text-decoration:none;color:var(--ink)}
+
+  /* Hero */
+  .hero{padding:72px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  .hero .ph{aspect-ratio:4/5;max-height:560px}
+  .hero .sub{font-size:1.15rem;color:var(--text)}
+
+  /* Toggle */
+  .switch{padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+  .switch-inner{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+  .switch-q{font-size:1.25rem;font-weight:700;color:var(--ink);margin:0}
+  .seg{display:inline-flex;border:2px solid var(--ink);border-radius:999px;padding:4px;gap:4px;flex-wrap:wrap;justify-content:center}
+  .seg button{border:0;background:transparent;border-radius:999px;padding:12px 26px;font-weight:700;font-size:1rem;cursor:pointer;color:var(--ink);font-family:inherit}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .switch small{color:var(--muted)}
+  body[data-target="casa"] .only-attivita{display:none!important}
+  body[data-target="attivita"] .only-casa{display:none!important}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);margin-bottom:10px}
+
+  /* Grids */
+  .grid{display:grid;gap:24px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+  .card p:last-child{margin-bottom:0}
+  .icon{width:64px;height:64px;border-radius:50%;background:var(--ph);margin-bottom:18px;display:flex;align-items:center;justify-content:center}
+  .icon svg{width:28px;height:28px;opacity:.5}
+  .center-col{text-align:center}
+  .center-col .icon{margin-left:auto;margin-right:auto}
+  .head{margin-bottom:48px}
+
+  /* Problem */
+  .problem .card h3{font-size:1.08rem}
+  .closing{max-width:760px;margin:48px auto 0;text-align:center;font-size:1.2rem;color:var(--ink)}
+
+  /* Video */
+  .video{aspect-ratio:16/9;max-width:900px;margin:0 auto}
+  .play{width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+  .play:after{content:"";border-left:22px solid #9a9a9a;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+
+  /* Objections */
+  .obj .card h3{font-size:1.05rem}
+  .obj .card .ph{height:120px;margin-bottom:20px}
+
+  /* Obiezioni come conversazione */
+  .objgrid{display:grid;grid-template-columns:4fr 7fr;gap:64px;align-items:start}
+  .objside{position:sticky;top:110px}
+  .objside h2{font-size:clamp(2rem,4vw,3rem)}
+  .objph{height:260px;margin:8px 0 24px}
+  .chat{display:grid;gap:28px}
+  .qa{display:grid;gap:10px}
+  .q,.a{border-radius:18px;padding:16px 20px;max-width:88%}
+  .q{background:#e6e6e6;justify-self:start;border-bottom-left-radius:4px}
+  .q p{font-weight:700;color:var(--ink);margin:0}
+  .a{background:#fff;border:1.5px solid var(--ink);justify-self:end;border-bottom-right-radius:4px}
+  .a p{margin:0}
+  .who-l{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+
+  /* Come lavoro: percorso in 3 passi */
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+  .timeline:before{content:"";position:absolute;top:28px;left:16%;right:16%;border-top:2px dashed var(--line);z-index:0}
+  .tstep{position:relative;z-index:1;text-align:center;border:1px solid var(--line);border-radius:var(--radius);padding:0 24px 24px;background:#fff;margin-top:28px;display:flex;flex-direction:column;align-items:center}
+  .tnum{width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin:-28px auto 18px}
+  .tstep p{flex:1}
+  .ttag{display:inline-block;border-radius:999px;background:var(--soft);padding:6px 14px;font-size:.85rem;font-weight:600;color:var(--ink)}
+  .afterband{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:center;margin-top:32px;border:2px solid var(--ink);border-radius:var(--radius);padding:28px}
+  .afterph{height:180px}
+  .afterband p{margin:0}
+
+  /* Split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split .ph{min-height:440px}
+  .steps{display:grid;gap:28px}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:16px}
+  .num{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--ink)}
+
+  /* Bill check */
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .checklist li{display:grid;grid-template-columns:36px 1fr;gap:14px;border:1px solid var(--line);border-radius:12px;padding:18px;background:#fff}
+  .checklist .n{font-weight:800;color:var(--ink);font-size:1.1rem}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:10px 16px;font-size:.95rem;cursor:pointer;font-family:inherit;color:var(--ink);text-align:left}
+  .chip:hover{background:var(--ink);color:#fff}
+  .billgrid .bill{order:2}
+  .billgrid{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
+  .bill{min-height:0;background:#fff;border:1px solid var(--line);flex-direction:column;justify-content:flex-start;padding:36px 32px}
+  .bill-head{width:100%;display:flex;justify-content:space-between;margin-bottom:24px}
+  .bill-head i{display:block;height:28px;width:30%;border-radius:6px;background:var(--ph)}
+  .bill-head i+i{width:22%}
+  .bill-rows{width:100%;display:grid;gap:14px;margin-bottom:36px}
+  .brow{display:grid;grid-template-columns:1fr 34px;gap:14px;align-items:center;border-top:1px dashed var(--line);padding-top:14px}
+  .bl{display:grid;gap:8px}
+  .bl i{display:block;height:9px;border-radius:6px;background:var(--ph)}
+  .pin{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+  .checklist li h3{margin-bottom:.2em;font-size:1.05rem}
+  .checklist li p{margin:0}
+  .checklist .n{width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:980px;margin:0 auto}
+  .pcard{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:#fff}
+  .pcard .icon{width:56px;height:56px;margin:0}
+  .pcard h3{font-size:1.08rem;margin-bottom:.3em}
+  .pcard p{margin:0}
+
+  /* Market */
+  .market-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}
+  .market-cols .card h3{display:flex;align-items:center;gap:10px}
+  .arrow{font-size:1.4rem}
+  .chart{min-height:260px;margin-top:8px;flex-direction:column}
+
+  /* About */
+  .about .ph{min-height:480px}
+  .signature{font-weight:700;color:var(--ink);margin-top:24px}
+
+  /* Reviews */
+  .review{border-radius:var(--radius);padding:24px;border:2px dashed var(--red);background:var(--red-bg)}
+  .review .stars{color:var(--red);letter-spacing:3px;margin-bottom:10px}
+  .review p{color:var(--red);font-weight:600}
+  .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+  .who .ph{width:44px;height:44px;border-radius:50%;padding:0;background:#f7d4d4}
+
+  /* Offer */
+  .offer{background:var(--soft);border-radius:24px;padding:56px;max-width:860px;margin:0 auto;text-align:center}
+  .ticks{list-style:none;padding:0;margin:28px auto;display:inline-grid;gap:12px;text-align:left}
+  .ticks li{display:flex;gap:12px;align-items:flex-start}
+  .ticks li:before{content:"✓";flex:0 0 26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;margin-top:1px}
+
+  /* FAQ */
+  .faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+  body[data-target="attivita"] .faq-biz{order:-1}
+  details{border:1px solid var(--line);border-radius:12px;background:#fff}
+  details[open]{border-color:var(--ink)}
+  summary{list-style:none;cursor:pointer;padding:20px 56px 20px 24px;font-weight:700;color:var(--ink);position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:400}
+  details[open] summary:after{content:"–"}
+  details .ans{padding:0 24px 20px}
+
+  /* Form */
+  .formbox{max-width:780px;margin:0 auto;border:2px solid var(--ink);border-radius:24px;padding:40px;background:#fff}
+  .progress{display:flex;gap:6px;margin-bottom:10px}
+  .progress span{flex:1;height:6px;border-radius:6px;background:var(--line)}
+  .progress span.on{background:var(--ink)}
+  .stepcount{font-size:.9rem;color:var(--muted);margin-bottom:24px}
+  fieldset{border:0;padding:0;margin:0 0 26px}
+  legend{font-weight:700;color:var(--ink);margin-bottom:12px;font-size:1.02rem;padding:0}
+  .opt{display:grid;gap:10px}
+  .opt.row{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+  .opt label{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;background:#fff}
+  .opt label:has(input:checked){border-color:var(--ink);background:var(--soft)}
+  .opt input{accent-color:#111;width:18px;height:18px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:700;color:var(--ink);margin-bottom:8px;font-size:.98rem}
+  .field input[type=text],.field input[type=tel],.field input[type=email]{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;font-family:inherit}
+  .field input:focus{border-color:var(--ink);outline:none}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .upload{border:2px dashed var(--line);border-radius:12px;padding:20px;background:var(--soft)}
+  .upload input{margin-top:8px;max-width:100%}
+  .hint{font-size:.88rem;color:var(--muted);margin-top:6px}
+  .check{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:.95rem}
+  .check input{margin-top:4px;width:18px;height:18px;accent-color:#111;flex:0 0 auto}
+  .err{color:#b00000;font-size:.9rem;font-weight:600;margin-top:8px;display:none}
+  .err.show{display:block}
+  .formnav{display:flex;justify-content:space-between;gap:12px;margin-top:28px}
+  .formnav .btn{min-width:140px}
+  .formstep{display:none}
+  .formstep.active{display:block}
+  .thanks{text-align:center;display:none}
+  .thanks.show{display:block}
+  .demo-note{font-size:.85rem;color:var(--muted);text-align:center;margin-top:18px}
+
+  /* Contacts */
+  .contacts{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .clist{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+  .clist li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center}
+  .clist .ic{width:44px;height:44px;border-radius:50%;background:var(--ph)}
+  footer{border-top:1px solid var(--line);padding:32px 0;font-size:.9rem;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  footer .logo{font-size:1rem}
+
+  /* WhatsApp flottante */
+  .wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--ink);color:#fff;display:none;align-items:center;justify-content:center;text-decoration:none;font-weight:800;font-size:.72rem;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+
+  /* Tablet */
+  @media (max-width:1024px){
+    .mainnav{display:none}
+    section{padding:72px 0}
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{gap:36px}
+    .split,.contacts{gap:36px}
+  }
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero .ph{order:-1;aspect-ratio:auto;height:340px;max-height:none}
+    .split{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr;gap:12px}
+    .timeline:before{top:0;bottom:0;left:50%;right:auto;border-top:0;border-left:2px dashed var(--line)}
+    .objgrid{grid-template-columns:1fr;gap:36px}
+    .objside{position:static}
+    .objph{display:none}
+    .billgrid{grid-template-columns:1fr;gap:32px}
+    .bill{min-height:0;max-width:520px;width:100%;margin:0 auto}
+    .split .ph{min-height:300px}
+    .about .ph{min-height:340px}
+    .contacts{grid-template-columns:1fr}
+    .offer{padding:40px 28px}
+  }
+  /* Mobile */
+  @media (max-width:600px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    section{padding:56px 0}
+    .hero{padding:32px 0 48px}
+    .head{margin-bottom:32px}
+    .g2,.g3,.g4,.market-cols,.two,.pgrid{grid-template-columns:1fr}
+    .pcard{grid-template-columns:44px 1fr;gap:14px;padding:20px}
+    .pcard .icon{width:44px;height:44px}
+    .bill{display:none!important}
+    .card{padding:22px}
+    .q,.a{max-width:94%;padding:14px 16px}
+    .afterband{grid-template-columns:1fr;padding:22px}
+    .afterph{display:none}
+    .chat{gap:22px}
+    .btns .btn{width:100%}
+    header.site .wrap{height:62px}
+    .head-actions .btn{padding:8px 14px;font-size:.85rem}
+    .head-actions .wa-icon{display:none}
+    .wa-float{display:flex}
+    .seg{width:100%}
+    .seg button{flex:1;padding:12px 10px}
+    .formbox{padding:24px 18px;border-radius:18px}
+    .formnav .btn{min-width:0;flex:1}
+    .offer{padding:32px 20px}
+    .split .ph{min-height:220px}
+    .about .ph{min-height:280px}
+    summary{padding:18px 48px 18px 18px}
+    details .ans{padding:0 18px 18px}
+    .closing{font-size:1.08rem}
+    .draftbar{font-size:.82rem}
+    /* card compatte: icona a sinistra del titolo */
+    .problem .card,.center-col{display:grid;grid-template-columns:44px 1fr;column-gap:14px;text-align:left}
+    .problem .card .icon,.center-col .icon{width:44px;height:44px;margin:0;grid-row:span 2}
+    .problem .card .icon svg,.center-col .icon svg{width:20px;height:20px}
+    .problem .card p,.center-col p{grid-column:2;margin-bottom:0}
+    .grid.g3,.grid.g4{gap:16px}
+    .center-col{padding-bottom:8px}
+    .video .cap{position:static;margin-top:10px}
+    .video{flex-direction:column}
+    .closing{text-align:left}
+  }
+</style>
+</head>
+<body data-target="casa">
+
+<!-- Barra bozza -->
+<div class="draftbar" role="note">
+  <div class="wrap">
+    <div><b>Bozza dei testi.</b> Grafica, colori e immagini arriveranno dopo l'approvazione del copy.</div>
+    <div class="legend"><i></i><span>In rosso: contenuti che deve fornire o verificare Enrico</span></div>
+  </div>
+</div>
+
+<!-- 0. Header -->
+<header class="site">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Logo, torna all'inizio">LOGO</a>
+    <nav class="mainnav" aria-label="Sezioni della pagina">
+      <a href="#come-lavoro">Come lavoro</a>
+      <a href="#bolletta">La bolletta</a>
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#faq">Domande</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <div class="head-actions">
+      <a href="#modulo" class="btn sm">Analisi gratuita</a>
+      <a href="#contatti" class="wa-icon" aria-label="Scrivimi su WhatsApp">WA</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Apri la bolletta e non capisci perché è così alta? Non sei l'unico.</p>
+      <h1>Per luce e gas ti serve una persona di fiducia. Non l'ennesimo call center.</h1>
+      <p class="sub only-casa">Sono Enrico Lizzani di <b>Watto, consulenza energetica</b>. Leggo le tue bollette, ti spiego cosa stai pagando e ti seguo anche dopo, come un meccanico di fiducia fa con la tua auto. Per te è gratis.</p>
+      <p class="sub only-attivita">Sono Enrico Lizzani di <b>Watto, consulenza energetica</b>. Leggo le bollette della tua attività, ti dico dove stai perdendo margine e ti seguo anche dopo, come il commercialista fa con i tuoi conti. Per te è gratis.</p>
+      <div class="btns">
+        <a href="#modulo" class="btn">Richiedi l'analisi gratuita</a>
+        <a href="#contatti" class="btn ghost">Scrivimi su WhatsApp</a>
+      </div>
+      <p class="micro">Gratis · Nessun obbligo di cambiare · Ti richiamo entro 24 ore lavorative</p>
+    </div>
+    <div class="ph" role="img" aria-label="Segnaposto ritratto di Enrico">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+      <span class="cap">Ritratto di Enrico</span>
+    </div>
+  </div>
+</section>
+
+<!-- 1b. Scelta Casa / Attività -->
+<section class="switch" id="scelta" aria-label="Scegli il tipo di bolletta">
+  <div class="wrap switch-inner">
+    <p class="switch-q">Le bollette che vuoi farmi vedere sono…</p>
+    <div class="seg" role="group" aria-label="Tipo di bolletta">
+      <button type="button" data-set="casa" aria-pressed="true">di casa mia</button>
+      <button type="button" data-set="attivita" aria-pressed="false">della mia attività</button>
+    </div>
+    <small>Così ti parlo dei problemi che conosci davvero.</small>
+  </div>
+</section>
+
+<!-- 1c. Problema -->
+<section class="problem">
+  <div class="wrap">
+    <div class="head center">
+      <h2>Se almeno una di queste ti è successa, sei nel posto giusto.</h2>
+    </div>
+
+    <div class="pgrid only-casa">
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="3" width="14" height="18" rx="2"/></svg></div><div><h3>La bolletta arriva e ti si gela il sangue.</h3><p>Stessa casa, stesso mese dell'anno scorso, cifra molto più alta. E nessuno ti spiega perché.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg></div><div><h3>Il telefono squilla per l'ennesima offerta.</h3><p>Voce sconosciuta, numero strano e tanta fretta di farti dire sì prima che tu abbia capito.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg></div><div><h3>Hai scelto il prezzo più basso e paghi di più.</h3><p>Prezzo basso, quota fissa alta. Come il ristorante con il menu a 10 euro e 8 euro di coperto.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 12a8 8 0 0 1 16 0v6h-4v-6h3M4 12v6h4v-6H5"/></svg></div><div><h3>Chiami il numero verde e resti in attesa.</h3><p>Musichetta, tasto 1, tasto 3. Mezz'ora dopo sei esattamente al punto di partenza.</p></div></div>
+    </div>
+
+    <div class="pgrid only-attivita">
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20h18L12 4z"/></svg></div><div><h3>Un mese la bolletta sale di mille euro.</h3><p>E in un attimo ti sei giocato il margine guadagnato con fatica su tutto il resto.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="10" width="4" height="10"/><rect x="10" y="6" width="4" height="14"/><rect x="16" y="3" width="4" height="17"/></svg></div><div><h3>Aumenta tutto nello stesso momento.</h3><p>Luce, gas, carburante, materie prime. Il tuo listino non può inseguirli tutti insieme.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg></div><div><h3>Non hai tempo per prezzi e scadenze.</h3><p>Hai un'attività da mandare avanti: non puoi fare anche l'analista dell'energia.</p></div></div>
+      <div class="pcard"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></div><div><h3>Chi ti ha fatto firmare è sparito.</h3><p>Il contratto c'è, il referente no. Quando qualcosa non torna, non sai chi chiamare.</p></div></div>
+    </div>
+
+    <p class="closing">Non è colpa tua. Le bollette sembrano scritte apposta per non farsi capire. Il mio lavoro è leggerle al posto tuo e spiegartele come farebbe un amico che di energia se ne intende.</p>
+    <div class="center" style="margin-top:28px"><a href="#modulo" class="btn">Fammi vedere la tua bolletta</a></div>
+  </div>
+</section>
+
+<!-- 2. Tre motivi -->
+<section class="alt">
+  <div class="wrap">
+    <div class="head center"><h2>Cosa cambia quando le bollette le segue una persona</h2></div>
+    <div class="grid g3">
+      <div class="center-col">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></div>
+        <h3>Hai un nome, non un numero verde.</h3>
+        <p>Quando qualcosa non torna, chiami me. Conosco già la tua situazione, come il medico di famiglia: non devi rispiegare tutto da capo ogni volta.</p>
+      </div>
+      <div class="center-col">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17l6-6 4 4 8-8v4h-2"/></svg></div>
+        <h3>Ti seguo anche dopo la firma.</h3>
+        <p>Molti spariscono il giorno dopo il contratto. Io resto. Tengo d'occhio il mercato e, quando esce qualcosa di meglio per te, ti chiamo io.</p>
+      </div>
+      <div class="center-col">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l5 5L20 6"/></svg></div>
+        <h3>Ti dico anche quando non ti conviene cambiare.</h3>
+        <p>Mi è successo più volte di dire a qualcuno: "Stai bene così, ci sentiamo alla scadenza". Preferisco un cliente che si fida a un contratto in più.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Video -->
+<section>
+  <div class="wrap">
+    <div class="ph video" role="img" aria-label="Segnaposto video di presentazione">
+      <div class="play"></div>
+      <span class="cap todo">Video di Enrico (60 a 90 secondi). Facoltativo ma consigliato: vedere e sentire Enrico aumenta molto la fiducia. Traccia nel documento dei testi.</span>
+    </div>
+    <p class="center micro">Un minuto per conoscermi, prima di mandarmi la tua bolletta.</p>
+  </div>
+</section>
+
+<!-- 4. Obiezioni: conversazione -->
+<section class="alt">
+  <div class="wrap objgrid">
+    <div class="objside">
+      <h2>"Sì, ma…"</h2>
+      <p class="lead">Dopo tante telefonate commerciali, è normale essere diffidenti. Questi sono i dubbi che sento più spesso. E le risposte che do a tutti, con franchezza.</p>
+      <div class="ph objph" role="img" aria-label="Segnaposto ritratto di Enrico">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+        <span class="cap">Enrico, foto di mezzo busto</span>
+      </div>
+      <a href="#modulo" class="btn">Hai un altro dubbio? Chiedimelo</a>
+    </div>
+    <div class="chat">
+        <div class="qa ">
+          <div class="q"><span class="who-l">Tu</span><p>"Quanto mi costa?"</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>Niente. Non ti chiedo un euro, né per guardare la bolletta né per seguirti dopo. Nessun abbonamento, nessuna parcella. E se decidi di non cambiare, resta gratis lo stesso.</p></div>
+        </div>
+        <div class="qa ">
+          <div class="q"><span class="who-l">Tu</span><p>"Faccio prima con un comparatore online."</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>Un comparatore è come il volantino del supermercato: ti mostra il prezzo in offerta, non quanto spendi davvero alla cassa. Spesso la quota fissa si mangia il vantaggio. E quando arriva una bolletta sbagliata, il volantino non risponde al telefono.</p></div>
+        </div>
+        <div class="qa ">
+          <div class="q"><span class="who-l">Tu</span><p>"Mandare la bolletta a uno sconosciuto? No, grazie."</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>Ti capisco: oggi chiedere una bolletta sembra come chiedere il saldo del conto. Ma senza la tua firma non si cambia nulla. La bolletta mi serve solo per capire cosa paghi. E dall'altra parte trovi me, con nome, cognome e un numero a cui rispondo io.</p></div>
+        </div>
+        <div class="qa only-casa">
+          <div class="q"><span class="who-l">Tu</span><p>"Lascio tutto com'è, tanto è uguale."</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>È come non guardare mai l'estratto conto: magari va tutto bene, ma se qualcosa cambia lo scopri tardi. Le offerte scadono e si rinnovano con condizioni nuove, spesso annunciate in una riga in fondo alla bolletta.</p></div>
+        </div>
+        <div class="qa only-attivita">
+          <div class="q"><span class="who-l">Tu</span><p>"Non ho tempo per stare dietro alle bollette."</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>Appunto. Il tuo tempo vale più di così. Prezzi, scadenze e conguagli li seguo io. Tu ricevi una telefonata quando c'è qualcosa da decidere.</p></div>
+        </div>
+        <div class="qa ">
+          <div class="q"><span class="who-l">Tu</span><p>"Che differenza c'è con il servizio clienti del mio fornitore?"</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>È la differenza tra l'assicurazione comprata online e l'assicuratore di fiducia. Finché va tutto bene sembrano uguali. Il giorno dell'incidente, uno ti lascia ore al telefono sotto la pioggia, l'altro risolve in dieci minuti.</p></div>
+        </div>
+        <div class="qa ">
+          <div class="q"><span class="who-l">Tu</span><p>"E se poi non mi trovo bene?"</p></div>
+          <div class="a"><span class="who-l">Enrico</span><p>Il cambio lo decidi tu e lo firmi tu. Se dopo qualcosa non va, non resti solo con un numero verde: mi chiami e lo sistemiamo insieme.</p></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Come lavoro -->
+<section id="come-lavoro">
+  <div class="wrap">
+    <div class="head center">
+      <h2>Prima guardo i numeri. Poi ti dico cosa farei al posto tuo.</h2>
+      <p class="lead only-casa">L'offerta migliore in assoluto non esiste, come non esiste la taglia giusta per tutti. Quella che va bene a chi spende 30 euro al mese non va bene a chi ha una famiglia di cinque persone e i riscaldamenti sempre accesi. Per questo parto sempre da te.</p>
+      <p class="lead only-attivita">L'offerta migliore in assoluto non esiste, come non esiste la taglia giusta per tutti. Il contratto giusto per un bar non va bene a un ristorante con le cucine accese tutto il giorno, né a un capannone. Per questo parto sempre dai tuoi consumi.</p>
+    </div>
+    <div class="timeline">
+      <div class="tstep">
+        <div class="tnum">1</div>
+        <h3>Mi mandi la bolletta</h3>
+        <p>Compili il modulo e carichi una bolletta recente. Va bene anche una foto fatta col telefono.</p>
+        <span class="ttag">Per te: 2 minuti</span>
+      </div>
+      <div class="tstep">
+        <div class="tnum">2</div>
+        <h3>Te la spiego</h3>
+        <p>La leggo riga per riga e ti chiamo: cosa paghi, cosa non va, se conviene cambiare o restare.</p>
+        <span class="ttag">Ti richiamo entro 24 ore lavorative</span>
+      </div>
+      <div class="tstep">
+        <div class="tnum">3</div>
+        <h3>Se vuoi, cambiamo</h3>
+        <p>Seguo io la pratica. Firmi online con un codice via email, senza muoverti da casa o dall'ufficio.</p>
+        <span class="ttag"><span class="todo">[Enrico: in quanto tempo è attiva la nuova fornitura?]</span></span>
+      </div>
+    </div>
+    <div class="afterband">
+      <div class="ph afterph" role="img" aria-label="Segnaposto foto di Enrico al telefono">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+        <span class="cap">Enrico al telefono</span>
+      </div>
+      <div>
+        <span class="tag">E dopo?</span>
+        <h3>Non sparisco il giorno dopo la firma.</h3>
+        <p>Tengo d'occhio il mercato e la tua fornitura. Quando c'è qualcosa di meglio per te, o arriva una bolletta che non torna, sono io a chiamarti. Tu hai sempre lo stesso numero: il mio.</p>
+      </div>
+    </div>
+    <div class="center" style="margin-top:40px"><a href="#modulo" class="btn">Inizia dal passo 1</a></div>
+  </div>
+</section>
+
+<!-- 5b. Cosa guardo -->
+<section class="alt" id="bolletta">
+  <div class="wrap">
+    <div class="head center">
+      <h2>La bolletta parla una lingua tutta sua. Io te la traduco.</h2>
+      <p class="lead">Una bolletta alta può avere tante cause. Prima di proporti qualsiasi cosa, controllo cinque punti.</p>
+    </div>
+    <div class="billgrid">
+      <div class="bill ph" role="img" aria-label="Segnaposto illustrazione di una bolletta con i 5 punti numerati">
+        <div class="bill-head"><i></i><i></i></div>
+        <div class="bill-rows"><div class="brow"><div class="bl"><i style="width:70%"></i><i style="width:45%"></i></div><span class="pin">1</span></div><div class="brow"><div class="bl"><i style="width:60%"></i><i style="width:80%"></i></div><span class="pin">2</span></div><div class="brow"><div class="bl"><i style="width:85%"></i><i style="width:55%"></i></div><span class="pin">3</span></div><div class="brow"><div class="bl"><i style="width:50%"></i><i style="width:70%"></i></div><span class="pin">4</span></div><div class="brow"><div class="bl"><i style="width:65%"></i><i style="width:40%"></i></div><span class="pin">5</span></div></div>
+        <span class="cap">Illustrazione: una bolletta con i 5 punti numerati</span>
+      </div>
+      <ol class="checklist">
+        <li><span class="n">1</span><div><h3>Il prezzo dell'energia</h3><p>Quanto paghi ogni kWh di luce o metro cubo di gas, e se il prezzo è fisso o variabile.</p></div></li>
+        <li><span class="n">2</span><div><h3>Le quote fisse</h3><p>Quello che paghi anche a casa chiusa. Spesso è qui che un prezzo basso diventa caro.</p></div></li>
+        <li><span class="n">3</span><div><h3>I consumi</h3><p>Letture reali o stimate, conguagli e consumi che non tornano con le tue abitudini.</p></div></li>
+        <li><span class="n">4</span><div><h3>Le voci inaspettate</h3><p>Servizi aggiunti, costi di attivazione e addebiti che nessuno ti ha mai spiegato.</p></div></li>
+        <li><span class="n">5</span><div><h3>La scadenza</h3><p>Quando finisce la tua offerta, cosa cambia dopo e se conviene muoversi prima.</p></div></li>
+      </ol>
+    </div>
+    <div class="center" style="margin-top:40px"><a href="#modulo" class="btn">Mandami la bolletta da controllare</a></div>
+  </div>
+</section>
+
+<!-- 5c. Mercato -->
+<section>
+  <div class="wrap" style="max-width:920px">
+    <div class="head center" style="margin-bottom:28px">
+      <h2>Non ti prometto un risparmio. Ti dico cosa conviene adesso.</h2>
+    </div>
+    <p>Pensa al fruttivendolo. Se le mele all'ingrosso costano il doppio, non può vendertele allo stesso prezzo di prima. Con luce e gas succede la stessa cosa: le compagnie comprano l'energia su un mercato dove il prezzo cambia ogni giorno.</p>
+    <p>Per questo chi ti promette "il 30% in meno" senza aver visto la tua bolletta, di solito recupera da un'altra parte.</p>
+    <div class="ph chart" role="img" aria-label="Segnaposto grafico illustrativo dell'andamento dei prezzi">
+      <svg viewBox="0 0 200 60" style="width:80%;height:auto;margin-bottom:60px" fill="none" stroke="currentColor" stroke-width="2"><rect x="0" y="0" width="45" height="60" fill="#dcdcdc" stroke="none"/><rect x="58" y="0" width="52" height="60" fill="#f4f4f4" stroke="none"/><path d="M0 40 C30 10, 50 10, 70 30 S110 55, 130 35 S170 5, 200 20"/><text x="8" y="56" font-size="6" fill="#777" stroke="none">proteggerti</text><text x="68" y="8" font-size="6" fill="#777" stroke="none">cambiare</text></svg>
+      <span class="cap todo">Grafico illustrativo, senza numeri. A cosa serve: far capire in un colpo d'occhio che il prezzo dell'energia sale e scende, e che la scelta giusta dipende dal momento. Come si legge: la linea è il prezzo nel tempo; nei tratti in discesa una fascia "momento per cambiare", nei tratti in salita una fascia "momento per proteggerti".</span>
+    </div>
+    <div class="market-cols">
+      <div class="card"><h3><span class="arrow">↓</span> Quando i prezzi scendono</h3><p>È il momento di cambiare offerta o di bloccare un buon prezzo.</p></div>
+      <div class="card"><h3><span class="arrow">↑</span> Quando i prezzi salgono</h3><p>L'obiettivo è proteggerti dai rincari, in attesa del momento giusto per muoverti.</p></div>
+    </div>
+    <p class="closing" style="margin-top:0">Funziona come con un mutuo. Oggi prendi la soluzione migliore che il mercato offre, domani, se i tassi scendono, la rinegozi. Il mio lavoro è accorgermi del momento giusto e chiamarti.</p>
+  </div>
+</section>
+
+<!-- 6. Benefici -->
+<section class="alt">
+  <div class="wrap">
+    <div class="head center">
+      <h2>Cosa cambia quando hai qualcuno che guarda le bollette con te</h2>
+      <p class="lead">Non ti prometto cifre. Ti prometto che non sarai più solo davanti a una bolletta.</p>
+    </div>
+    <div class="grid g3">
+      <div class="center-col only-attivita"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Proteggi il margine.</h3><p>Sai in anticipo quanto peseranno luce e gas sui tuoi costi, invece di scoprirlo a fine mese.</p></div>
+      <div class="center-col only-casa"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Capisci cosa paghi.</h3><p>Ogni voce ha un senso e una spiegazione. Una bolletta alta smette di essere un mistero.</p></div>
+      <div class="center-col"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Non ti perdi le occasioni.</h3><p>Alcune offerte durano una settimana. Se fanno al caso tuo, ti chiamo prima che spariscano.</p></div>
+      <div class="center-col only-attivita"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Un solo referente per tutto.</h3><p>Sede, magazzino, punto vendita: tutte le forniture seguite da una persona sola. <span class="todo">[Enrico: confermi che segui più sedi?]</span></p></div>
+      <div class="center-col only-casa"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Ti riprendi il tuo tempo.</h3><p>Una telefonata con me al posto di un pomeriggio al centralino. Il tempo è denaro, il tuo soprattutto.</p></div>
+      <div class="center-col"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Un contratto su misura.</h3><p>Scelto in base a quanto e come consumi, non all'offerta del mese.</p></div>
+      <div class="center-col"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Meno brutte sorprese.</h3><p>Conguagli, letture stimate, consumi strani: li guardiamo insieme appena arriva la bolletta.</p></div>
+      <div class="center-col"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg></div><h3>Qualcuno da chiamare.</h3><p>Anche tra un anno, anche per un dubbio piccolo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Chi sono -->
+<section class="about" id="chi-sono">
+  <div class="wrap split">
+    <div>
+      <h2>Dietro Watto ci sono io. Piacere, Enrico.</h2>
+      <p>Faccio il consulente energetico a Roma e lavoro alla vecchia maniera: i miei clienti li conosco per nome, rispondo al telefono e, quando posso, passo a trovarli.</p>
+      <p>Non mi piacciono le telefonate a raffica e le promesse di risparmio buttate lì. Mi piace sedermi con una bolletta davanti e spiegare a una persona cosa sta pagando, come farei con un amico.</p>
+      <p>La firma ormai è online, quindi seguo clienti in tutta Italia. Ma il modo di lavorare è sempre quello: una persona, il suo numero, nessun centralino in mezzo.</p>
+      <p>Watto è il nome che ho dato a questo modo di lavorare.</p>
+      <p class="todo">[Enrico: da quanti anni fai questo lavoro? Qualifiche o formazione da citare?] </p>
+      <p class="signature">Enrico Lizzani · Watto, consulenza energetica</p>
+    </div>
+    <div class="ph" role="img" aria-label="Segnaposto foto ambientata di Enrico">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+      <span class="cap">Foto ambientata di Enrico</span>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Prove -->
+<section class="alt">
+  <div class="wrap">
+    <div class="head center">
+      <h2>Il passaparola mi ha portato fin qui</h2>
+      <p class="lead">Quasi tutti i miei clienti mi hanno conosciuto perché qualcuno gli ha detto: "Sentilo, a me ha aiutato". È la cosa di cui vado più fiero.</p>
+    </div>
+    <div class="grid g3">
+      <div class="review"><div class="stars">★★★★★</div><p>[Enrico: recensione Google 1, testo completo]</p><div class="who"><div class="ph"></div><span class="todo">[Nome cliente]</span></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>[Enrico: recensione Google 2, testo completo]</p><div class="who"><div class="ph"></div><span class="todo">[Nome cliente]</span></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>[Enrico: recensione Google 3, meglio se di un'attività]</p><div class="who"><div class="ph"></div><span class="todo">[Nome cliente]</span></div></div>
+    </div>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="todo-box only-casa">[Enrico: caso reale di una famiglia. Il problema / cosa hai fatto / come è finita]</div>
+      <div class="todo-box only-casa">[Enrico: secondo caso reale di una famiglia]</div>
+      <div class="todo-box only-casa">[Enrico: caso reale di un'attività]</div>
+      <div class="todo-box only-attivita">[Enrico: caso reale di un'attività. Il problema / cosa hai fatto / come è finita]</div>
+      <div class="todo-box only-attivita">[Enrico: secondo caso reale di un'attività, meglio se di un altro settore]</div>
+      <div class="todo-box only-attivita">[Enrico: caso reale di una famiglia]</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Offerta -->
+<section>
+  <div class="wrap">
+    <div class="offer">
+      <h2>Mandami una bolletta. Il resto lo faccio io.</h2>
+      <p class="lead" style="margin:0 auto">Ti dico cosa stai pagando e cosa farei al posto tuo. Gratis e senza impegno.</p>
+      <ul class="ticks">
+        <li>La leggo riga per riga</li>
+        <li>La confronto con le offerte adatte ai tuoi consumi</li>
+        <li>Ti chiamo e ti spiego tutto con parole semplici</li>
+        <li>Ti dico onestamente se cambiare o restare</li>
+        <li>Se cambi, seguo io la pratica e resto il tuo riferimento</li>
+      </ul>
+      <div><a href="#modulo" class="btn">Invia la bolletta</a></div>
+      <p class="micro">Gratis · Nessun obbligo · Ti richiamo entro 24 ore lavorative</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="alt" id="faq">
+  <div class="wrap">
+    <div class="head center"><h2>Domande frequenti</h2></div>
+    <div class="faq">
+      <details class="faq-biz only-attivita"><summary>Puoi seguire più sedi o più contatori?</summary><div class="ans">Sì. Li analizzo tutti e ti do un quadro unico di quanto spendi e dove intervenire. <span class="verify">Enrico: verifica questa risposta</span></div></details>
+      <details open><summary>Se ti mando la bolletta devo per forza cambiare fornitore?</summary><div class="ans">No. Guardare la bolletta non ti impegna a nulla. Si cambia solo se lo decidi tu e firmi.</div></details>
+      <details><summary>Quanto costa?</summary><div class="ans">Niente, né l'analisi né l'assistenza dopo.</div></details>
+      <details><summary>Cosa ti devo mandare?</summary><div class="ans">Una bolletta recente, tutte le pagine. Va bene il PDF o una foto leggibile fatta col telefono.</div></details>
+      <details><summary>Quando mi rispondi?</summary><div class="ans">Ti richiamo entro 24 ore lavorative dall'invio.</div></details>
+      <details><summary>Se cambio, rimango senza luce o gas?</summary><div class="ans">No: cambia chi ti manda la bolletta, non i cavi o i tubi. <span class="verify">Enrico: verifica questa risposta</span></div></details>
+      <details><summary>Mi è arrivata una bolletta altissima. Puoi guardarla?</summary><div class="ans">Sì, è una delle richieste più frequenti. Guardo voci, letture e consumi per capire cosa è successo.</div></details>
+      <details><summary>E se non voglio cambiare offerta?</summary><div class="ans">Va benissimo. Ti aiuto lo stesso a capire cosa paghi.</div></details>
+      <details><summary>Lavori solo a Roma?</summary><div class="ans">No. Si firma online, quindi seguo clienti in tutta Italia.</div></details>
+      <details class="faq-biz"><summary>Segui anche negozi, ristoranti e aziende?</summary><div class="ans">Sì, dal piccolo negozio all'attività con consumi importanti.</div></details>
+      <details><summary>Posso chiamarti anche dopo?</summary><div class="ans">Certo, è proprio il punto. Resto il tuo riferimento per qualsiasi dubbio.</div></details>
+      <details><summary>Che fine fanno i dati della mia bolletta?</summary><div class="ans">Li uso solo per l'analisi e li conservo in modo protetto. I dettagli sono nell'informativa privacy.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Modulo -->
+<section id="modulo">
+  <div class="wrap">
+    <div class="head center">
+      <h2>Fammi vedere la tua bolletta</h2>
+      <p class="lead">Due minuti per compilare. Io la guardo e ti richiamo entro 24 ore lavorative.</p>
+    </div>
+
+    <div class="formbox">
+      <form id="leadform" novalidate>
+        <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p class="stepcount" id="stepcount" aria-live="polite">Passo 1 di 4</p>
+
+        <!-- Passo 1 -->
+        <div class="formstep active" data-step="1">
+          <h3>Di che bolletta parliamo?</h3>
+          <fieldset>
+            <legend>Per chi è la fornitura?</legend>
+            <div class="opt row">
+              <label><input type="radio" name="tipo" value="casa" required> Casa</label>
+              <label><input type="radio" name="tipo" value="piva"> Partita IVA o negozio</label>
+              <label><input type="radio" name="tipo" value="azienda"> Azienda</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Cosa vuoi che controlli?</legend>
+            <div class="opt row">
+              <label><input type="radio" name="cosa" value="luce" required> Luce</label>
+              <label><input type="radio" name="cosa" value="gas"> Gas</label>
+              <label><input type="radio" name="cosa" value="entrambe"> Tutte e due</label>
+            </div>
+          </fieldset>
+          <p class="err" role="alert">Scegli una risposta per andare avanti.</p>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="formstep" data-step="2">
+          <h3>Raccontami un po'</h3>
+          <fieldset>
+            <legend>Perché mi scrivi? <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></legend>
+            <div class="opt">
+              <label><input type="radio" name="motivo" value="alta"> Bolletta più alta del solito</label>
+              <label><input type="radio" name="motivo" value="scadenza"> Offerta in scadenza</label>
+              <label><input type="radio" name="motivo" value="proposta"> Mi hanno proposto un'offerta</label>
+              <label><input type="radio" name="motivo" value="seguito"> Voglio qualcuno che mi segua</label>
+              <label><input type="radio" name="motivo" value="altro"> Altro</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="fornitore">Chi è il tuo fornitore oggi?</label>
+            <input type="text" id="fornitore" name="fornitore" required autocomplete="off">
+          </div>
+          <fieldset>
+            <legend>Quanto spendi al mese, più o meno?</legend>
+            <div class="opt row" id="spesa-casa">
+              <label><input type="radio" name="spesa" value="0-50"> Fino a 50 €</label>
+              <label><input type="radio" name="spesa" value="50-100"> Da 50 a 100 €</label>
+              <label><input type="radio" name="spesa" value="100-200"> Da 100 a 200 €</label>
+              <label><input type="radio" name="spesa" value="200+"> Oltre 200 €</label>
+            </div>
+            <div class="opt row" id="spesa-att" hidden>
+              <label><input type="radio" name="spesa" value="0-500"> Fino a 500 €</label>
+              <label><input type="radio" name="spesa" value="500-2000"> Da 500 a 2.000 €</label>
+              <label><input type="radio" name="spesa" value="2000+"> Oltre 2.000 €</label>
+            </div>
+            <span class="verify" id="spesa-verify" hidden>Enrico: conferma queste fasce di spesa per le attività</span>
+          </fieldset>
+          <p class="err" role="alert">Scrivi il tuo fornitore e scegli quanto spendi.</p>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="formstep" data-step="3">
+          <h3>Carica la bolletta</h3>
+          <div class="grid g2" style="gap:16px">
+            <div class="upload" id="up-luce">
+              <label for="file-luce"><b>Bolletta luce</b></label>
+              <input type="file" id="file-luce" accept=".pdf,image/*" multiple>
+            </div>
+            <div class="upload" id="up-gas">
+              <label for="file-gas"><b>Bolletta gas</b></label>
+              <input type="file" id="file-gas" accept=".pdf,image/*" multiple>
+            </div>
+          </div>
+          <p class="hint">PDF, JPG o PNG, anche più foto, massimo 10 MB a file. Va bene anche una foto col telefono: assicurati che si leggano tutte le pagine.</p>
+          <p class="err" id="err-file" role="alert">Mi serve la bolletta per poterla analizzare: caricala qui.</p>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="formstep" data-step="4">
+          <h3>Dove ti richiamo?</h3>
+          <div class="two">
+            <div class="field"><label for="nome">Nome e cognome</label><input type="text" id="nome" name="nome" required autocomplete="name"></div>
+            <div class="field"><label for="tel">Telefono</label><input type="tel" id="tel" name="tel" required autocomplete="tel"></div>
+            <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required autocomplete="email"></div>
+            <div class="field"><label for="comune">Comune</label><input type="text" id="comune" name="comune" required autocomplete="address-level2"></div>
+          </div>
+          <div class="field" id="field-azienda" hidden><label for="azienda">Nome dell'attività</label><input type="text" id="azienda" name="azienda" autocomplete="organization"></div>
+          <fieldset>
+            <legend>Preferisci una telefonata o un messaggio WhatsApp? <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></legend>
+            <div class="opt row">
+              <label><input type="radio" name="contatto" value="telefono"> Telefonata</label>
+              <label><input type="radio" name="contatto" value="whatsapp"> WhatsApp</label>
+            </div>
+          </fieldset>
+          <label class="check"><input type="checkbox" id="privacy" required> <span>Ho letto l'<span class="todo">[informativa privacy, da Iubenda]</span> e acconsento al trattamento dei dati per l'analisi richiesta.</span></label>
+          <label class="check"><input type="checkbox" id="mkt"> <span>Acconsento a ricevere comunicazioni commerciali (facoltativo).</span></label>
+          <p class="err" id="err-4" role="alert">Controlla i campi: servono nome, telefono, email, comune e il consenso privacy.</p>
+        </div>
+
+        <div class="formnav">
+          <button type="button" class="btn ghost" id="prev" hidden>Indietro</button>
+          <button type="button" class="btn" id="next" style="margin-left:auto">Avanti</button>
+        </div>
+      </form>
+
+      <div class="thanks" id="thanks" aria-live="polite">
+        <h3 id="thanks-title">Grazie, la tua bolletta è arrivata.</h3>
+        <p>La guardo con calma e ti richiamo entro 24 ore lavorative. Se nel frattempo hai una domanda, scrivimi su WhatsApp.</p>
+        <a href="#contatti" class="btn">Scrivimi su WhatsApp</a>
+      </div>
+      <p class="demo-note">Bozza dimostrativa: il modulo non invia dati e i file non vengono caricati.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. Contatti -->
+<section class="alt" id="contatti">
+  <div class="wrap contacts">
+    <div>
+      <h2>Hai una bolletta che non ti torna? Partiamo da quella.</h2>
+      <p class="lead">Mandamela e dimmi cosa vorresti capire. Ci mettiamo poco.</p>
+      <a href="#contatti" class="btn">Scrivimi su WhatsApp</a>
+    </div>
+    <div>
+      <h3>Watto, consulenza energetica di Enrico Lizzani</h3>
+      <ul class="clist">
+        <li><span class="ic"></span><span>Telefono e WhatsApp: <span class="todo">[Enrico: numero]</span></span></li>
+        <li><span class="ic"></span><span>Email: <span class="todo">[Enrico: indirizzo email]</span></span></li>
+        <li><span class="ic"></span><span>Roma e tutta Italia, online</span></li>
+        <li><span class="ic"></span><span>Orari: <span class="todo">[Enrico: giorni e orari]</span></span></li>
+        <li><span class="ic"></span><span>Scheda Google: <span class="todo">[link alla scheda]</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">LOGO</span>
+    <span>© 2026 Watto di Enrico Lizzani · P.IVA <span class="todo">[Enrico: P.IVA]</span> · Privacy · Cookie</span>
+  </div>
+</footer>
+
+<a href="#contatti" class="wa-float" aria-label="Scrivimi su WhatsApp">WA</a>
+
+<script>
+(function(){
+  var body=document.body;
+  var segBtns=document.querySelectorAll('.seg button');
+  function setTarget(t){
+    body.setAttribute('data-target',t);
+    segBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.set===t?'true':'false');});
+    var tipo=document.querySelector('input[name=tipo][value="'+(t==='casa'?'casa':'piva')+'"]');
+    if(tipo){tipo.checked=true;}
+    syncTipo();
+  }
+  segBtns.forEach(function(b){b.addEventListener('click',function(){setTarget(b.dataset.set);});});
+
+  // Form
+  var form=document.getElementById('leadform');
+  var steps=form.querySelectorAll('.formstep');
+  var bars=form.querySelectorAll('.progress span');
+  var prev=document.getElementById('prev'),next=document.getElementById('next');
+  var count=document.getElementById('stepcount');
+  var cur=1;
+
+  function syncTipo(){
+    var t=form.querySelector('input[name=tipo]:checked');
+    var att=t && t.value!=='casa';
+    document.getElementById('spesa-casa').hidden=!!att;
+    document.getElementById('spesa-att').hidden=!att;
+    document.getElementById('spesa-verify').hidden=!att;
+    document.getElementById('field-azienda').hidden=!att;
+    var sel=form.querySelector('input[name=spesa]:checked');
+    if(sel && sel.closest('[hidden]')) sel.checked=false;
+  }
+  function syncCosa(){
+    var c=form.querySelector('input[name=cosa]:checked');
+    var v=c?c.value:'entrambe';
+    document.getElementById('up-luce').hidden=(v==='gas');
+    document.getElementById('up-gas').hidden=(v==='luce');
+  }
+  form.addEventListener('change',function(e){
+    if(e.target.name==='tipo'){syncTipo();}
+    if(e.target.name==='cosa'){syncCosa();}
+    var err=steps[cur-1].querySelector('.err');if(err)err.classList.remove('show');
+  });
+
+  function show(n){
+    cur=n;
+    steps.forEach(function(s){s.classList.toggle('active',+s.dataset.step===n);});
+    bars.forEach(function(b,i){b.classList.toggle('on',i<n);});
+    count.textContent='Passo '+n+' di 4';
+    prev.hidden=(n===1);
+    next.textContent=(n===4)?'Invia la bolletta':'Avanti';
+  }
+  function valid(n){
+    if(n===1){return !!form.querySelector('input[name=tipo]:checked') && !!form.querySelector('input[name=cosa]:checked');}
+    if(n===2){return form.fornitore.value.trim()!=='' && !!form.querySelector('input[name=spesa]:checked');}
+    if(n===3){
+      var ok=true,big=false;
+      ['luce','gas'].forEach(function(k){
+        var box=document.getElementById('up-'+k);
+        if(box.hidden)return;
+        var f=document.getElementById('file-'+k).files;
+        if(!f.length)ok=false;
+        for(var i=0;i<f.length;i++){if(f[i].size>10*1024*1024)big=true;}
+      });
+      var e=document.getElementById('err-file');
+      e.textContent=big?'Il file è troppo grande (massimo 10 MB) o non è un PDF o un\'immagine.':'Mi serve la bolletta per poterla analizzare: caricala qui.';
+      return ok && !big;
+    }
+    if(n===4){
+      var tel=form.tel.value.replace(/\D/g,'');
+      var mail=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.value.trim());
+      return form.nome.value.trim()!=='' && tel.length>=9 && mail && form.comune.value.trim()!=='' && document.getElementById('privacy').checked;
+    }
+    return true;
+  }
+  next.addEventListener('click',function(){
+    if(!valid(cur)){steps[cur-1].querySelector('.err').classList.add('show');return;}
+    if(cur<4){show(cur+1);form.scrollIntoView({behavior:'smooth',block:'start'});return;}
+    var nome=form.nome.value.trim().split(' ')[0];
+    document.getElementById('thanks-title').textContent='Grazie '+nome+', la tua bolletta è arrivata.';
+    form.hidden=true;document.getElementById('thanks').classList.add('show');
+  });
+  prev.addEventListener('click',function(){if(cur>1)show(cur-1);});
+
+  // Chip domande: preselezionano il motivo e portano al modulo
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      var r=form.querySelector('input[name=motivo][value="'+c.dataset.motivo+'"]');
+      if(r)r.checked=true;
+      document.getElementById('modulo').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  var start=(/[?&]per=attivita/.test(location.search)||location.hash==='#attivita')?'attivita':'casa';
+  setTarget(start);
+  syncCosa();
+  show(1);
+})();
+</script>
+</body>
+</html>
