@@ -80,6 +80,7 @@
   .hero{padding:72px 0 64px}
   .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
   .hero .ph{aspect-ratio:4/5;max-height:560px}
+  .slogan{font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin:-.2em 0 1.1em}
   .hero .sub{font-size:1.15rem;color:var(--text)}
 
   /* Toggle */
@@ -151,6 +152,10 @@
   .steps{display:grid;gap:28px}
   .step{display:grid;grid-template-columns:48px 1fr;gap:16px}
   .num{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--ink)}
+
+  .source{text-align:center;font-size:.78rem;color:#b5b5b5;margin-top:18px}
+  .source a{color:#b5b5b5;text-decoration:none}
+  .source a:hover{text-decoration:underline}
 
   /* Bill check */
   .checklist{list-style:none;margin:0;padding:0;display:grid;gap:14px}
@@ -351,7 +356,7 @@
     </nav>
     <div class="head-actions">
       <a href="#modulo" class="btn sm">Analisi gratuita</a>
-      <a href="#contatti" class="wa-icon" aria-label="Scrivimi su WhatsApp">WA</a>
+      <a href="https://wa.me/393428600559" target="_blank" rel="noopener" class="wa-icon" aria-label="Scrivimi su WhatsApp">WA</a>
     </div>
   </div>
 </header>
@@ -363,12 +368,13 @@
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Apri la bolletta e non capisci perché è così alta? Non sei l'unico.</p>
-      <h1>Per luce e gas ti serve una persona di fiducia. Non l'ennesimo call center.</h1>
+      <h1>Per luce e gas ti serve una persona di fiducia.</h1>
+      <p class="slogan">Tutela continua, risparmio probabile.</p>
       <p class="sub only-casa">Sono Enrico Lizzani di <b>Watto, consulenza energetica</b>. Leggo le tue bollette, ti spiego cosa stai pagando e ti seguo anche dopo, come un meccanico di fiducia fa con la tua auto. Per te è gratis.</p>
       <p class="sub only-attivita">Sono Enrico Lizzani di <b>Watto, consulenza energetica</b>. Leggo le bollette della tua attività, ti dico dove stai perdendo margine e ti seguo anche dopo, come il commercialista fa con i tuoi conti. Per te è gratis.</p>
       <div class="btns">
         <a href="#modulo" class="btn">Richiedi l'analisi gratuita</a>
-        <a href="#contatti" class="btn ghost">Scrivimi su WhatsApp</a>
+        <a href="https://wa.me/393428600559" target="_blank" rel="noopener" class="btn ghost">Scrivimi su WhatsApp</a>
       </div>
       <p class="micro">Gratis · Nessun obbligo di cambiare · Ti richiamo entro 24 ore lavorative</p>
     </div>
@@ -522,7 +528,7 @@
         <div class="tnum">3</div>
         <h3>Se vuoi, cambiamo</h3>
         <p>Seguo io la pratica. Firmi online con un codice via email, senza muoverti da casa o dall'ufficio.</p>
-        <span class="ttag"><span class="todo">[Enrico: in quanto tempo è attiva la nuova fornitura?]</span></span>
+        <span class="ttag">Fornitura attiva in pochi giorni</span>
       </div>
     </div>
     <div class="afterband">
@@ -582,6 +588,7 @@
       <div class="card"><h3><span class="arrow">↑</span> Quando i prezzi salgono</h3><p>L'obiettivo è proteggerti dai rincari, in attesa del momento giusto per muoverti.</p></div>
     </div>
     <p class="closing" style="margin-top:0">Funziona come con un mutuo. Oggi prendi la soluzione migliore che il mercato offre, domani, se i tassi scendono, la rinegozi. Il mio lavoro è accorgermi del momento giusto e chiamarti.</p>
+    <p class="source">Fonte dei prezzi: <a href="https://www.mercatoelettrico.org/Home/Esiti/Elettricita/MGP/Esiti/Pun" target="_blank" rel="noopener">dati ufficiali GME</a></p>
   </div>
 </section>
 
@@ -610,11 +617,10 @@
   <div class="wrap split">
     <div>
       <h2>Dietro Watto ci sono io. Piacere, Enrico.</h2>
-      <p>Faccio il consulente energetico a Roma e lavoro alla vecchia maniera: i miei clienti li conosco per nome, rispondo al telefono e, quando posso, passo a trovarli.</p>
-      <p>Non mi piacciono le telefonate a raffica e le promesse di risparmio buttate lì. Mi piace sedermi con una bolletta davanti e spiegare a una persona cosa sta pagando, come farei con un amico.</p>
-      <p>La firma ormai è online, quindi seguo clienti in tutta Italia. Ma il modo di lavorare è sempre quello: una persona, il suo numero, nessun centralino in mezzo.</p>
-      <p>Watto è il nome che ho dato a questo modo di lavorare.</p>
-      <p class="todo">[Enrico: da quanti anni fai questo lavoro? Qualifiche o formazione da citare?] </p>
+      <p>Faccio il consulente energetico a Roma. Ho iniziato nel 2022, l'anno in cui la crisi energetica ha fatto esplodere le bollette di famiglie e imprese.</p>
+      <p>Prima ho studiato in ambito economico e ho lavorato come imprenditore e nella consulenza immobiliare. Per questo numeri e contratti li leggo con attenzione, riga per riga.</p>
+      <p>Oggi seguo famiglie e imprese alla vecchia maniera: conosco i miei clienti per nome, rispondo al telefono e li chiamo io quando conviene rivedere le condizioni. La firma ormai è online, quindi lavoro con clienti in tutta Italia.</p>
+      <p>Watto è il nome che ho dato a questo modo di lavorare: <b>tutela continua, risparmio probabile.</b></p>
       <p class="signature">Enrico Lizzani · Watto, consulenza energetica</p>
     </div>
     <div class="ph" role="img" aria-label="Segnaposto foto ambientata di Enrico">
@@ -784,6 +790,7 @@
             <div class="field"><label for="comune">Comune</label><input type="text" id="comune" name="comune" required autocomplete="address-level2"></div>
           </div>
           <div class="field" id="field-azienda" hidden><label for="azienda">Nome dell'attività</label><input type="text" id="azienda" name="azienda" autocomplete="organization"></div>
+          <div class="field"><label for="segnalatore">Chi ti ha consigliato Watto? <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></label><input type="text" id="segnalatore" name="segnalatore" placeholder="Nome o codice di chi ti ha segnalato" autocomplete="off"></div>
           <fieldset>
             <legend>Preferisci una telefonata o un messaggio WhatsApp? <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></legend>
             <div class="opt row">
@@ -805,7 +812,7 @@
       <div class="thanks" id="thanks" aria-live="polite">
         <h3 id="thanks-title">Grazie, la tua bolletta è arrivata.</h3>
         <p>La guardo con calma e ti richiamo entro 24 ore lavorative. Se nel frattempo hai una domanda, scrivimi su WhatsApp.</p>
-        <a href="#contatti" class="btn">Scrivimi su WhatsApp</a>
+        <a href="https://wa.me/393428600559" target="_blank" rel="noopener" class="btn">Scrivimi su WhatsApp</a>
       </div>
       <p class="demo-note">Bozza dimostrativa: il modulo non invia dati e i file non vengono caricati.</p>
     </div>
@@ -818,15 +825,15 @@
     <div>
       <h2>Hai una bolletta che non ti torna? Partiamo da quella.</h2>
       <p class="lead">Mandamela e dimmi cosa vorresti capire. Ci mettiamo poco.</p>
-      <a href="#contatti" class="btn">Scrivimi su WhatsApp</a>
+      <a href="https://wa.me/393428600559" target="_blank" rel="noopener" class="btn">Scrivimi su WhatsApp</a>
     </div>
     <div>
       <h3>Watto, consulenza energetica di Enrico Lizzani</h3>
       <ul class="clist">
-        <li><span class="ic"></span><span>Telefono e WhatsApp: <span class="todo">[Enrico: numero]</span></span></li>
-        <li><span class="ic"></span><span>Email: <span class="todo">[Enrico: indirizzo email]</span></span></li>
+        <li><span class="ic"></span><span>Telefono e WhatsApp: <a href="tel:+393428600559">342 860 0559</a></span></li>
+        <li><span class="ic"></span><span>Email: <a href="mailto:wattoconsulting@gmail.com">wattoconsulting@gmail.com</a></span></li>
         <li><span class="ic"></span><span>Roma e tutta Italia, online</span></li>
-        <li><span class="ic"></span><span>Orari: <span class="todo">[Enrico: giorni e orari]</span></span></li>
+        <li><span class="ic"></span><span>Orari: dal lunedì al sabato, dalle 10:00 alle 19:00</span></li>
         <li><span class="ic"></span><span>Scheda Google: <span class="todo">[link alla scheda]</span></span></li>
       </ul>
     </div>
@@ -842,7 +849,7 @@
   </div>
 </footer>
 
-<a href="#contatti" class="wa-float" aria-label="Scrivimi su WhatsApp">WA</a>
+<a href="https://wa.me/393428600559" target="_blank" rel="noopener" class="wa-float" aria-label="Scrivimi su WhatsApp">WA</a>
 
 <script>
 (function(){
@@ -938,6 +945,8 @@
 
   var start=(/[?&]per=attivita/.test(location.search)||location.hash==='#attivita')?'attivita':'casa';
   setTarget(start);
+  var ref=new URLSearchParams(location.search).get('ref');
+  if(ref){document.getElementById('segnalatore').value=ref;}
   syncCosa();
   show(1);
 })();
