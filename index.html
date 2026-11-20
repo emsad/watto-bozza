@@ -332,7 +332,7 @@
     .closing{text-align:left}
   }
 </style>
-<link rel="stylesheet" href="watto.css?v=20261120b" media="not all" id="grafica-css">
+<link rel="stylesheet" href="watto.css?v=20261120e" media="not all" id="grafica-css">
 <script>if(!/[?&]wireframe/.test(location.search)){document.getElementById('grafica-css').media='all';document.documentElement.className+=' grafica';}</script>
 </head>
 <body data-target="casa">
@@ -402,49 +402,54 @@
 
 <!-- 1c. Problema -->
 <section class="problem">
-  <div class="wrap">
-    <div class="head center">
+  <div class="wrap prob-grid">
+    <div class="prob-side">
       <h2>Se almeno una di queste ti è successa, sei nel posto giusto.</h2>
+      <p class="closing">Non è colpa tua. Le bollette sembrano scritte apposta per non farsi capire. Il mio lavoro è leggerle al posto tuo e spiegartele come farebbe un amico che di energia se ne intende.</p>
+      <a href="#modulo" class="btn">Fammi vedere la tua bolletta</a>
     </div>
-
+    <div class="prob-list">
     <div class="pgrid only-casa">
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-bolletta"/></svg></div><div><h3>La bolletta arriva e ti si gela il sangue.</h3><p>Stessa casa, stesso mese dell'anno scorso, cifra molto più alta. E nessuno ti spiega perché.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-squilla"/></svg></div><div><h3>Il telefono squilla per l'ennesima offerta.</h3><p>Voce sconosciuta, numero strano e tanta fretta di farti dire sì prima che tu abbia capito.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-prezzo"/></svg></div><div><h3>Hai scelto il prezzo più basso e paghi di più.</h3><p>Prezzo basso, quota fissa alta. Come il ristorante con il menu a 10 euro e 8 euro di coperto.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-attesa"/></svg></div><div><h3>Chiami il numero verde e resti in attesa.</h3><p>Musichetta, tasto 1, tasto 3. Mezz'ora dopo sei esattamente al punto di partenza.</p></div></div>
     </div>
-
     <div class="pgrid only-attivita">
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-sale"/></svg></div><div><h3>Un mese la bolletta sale di mille euro.</h3><p>E in un attimo ti sei giocato il margine guadagnato con fatica su tutto il resto.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-aumenta"/></svg></div><div><h3>Aumenta tutto nello stesso momento.</h3><p>Luce, gas, carburante, materie prime. Il tuo listino non può inseguirli tutti insieme.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-tempo"/></svg></div><div><h3>Non hai tempo per prezzi e scadenze.</h3><p>Hai un'attività da mandare avanti: non puoi fare anche l'analista dell'energia.</p></div></div>
       <div class="pcard"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-sparito"/></svg></div><div><h3>Chi ti ha fatto firmare è sparito.</h3><p>Il contratto c'è, il referente no. Quando qualcosa non torna, non sai chi chiamare.</p></div></div>
     </div>
-
-    <p class="closing">Non è colpa tua. Le bollette sembrano scritte apposta per non farsi capire. Il mio lavoro è leggerle al posto tuo e spiegartele come farebbe un amico che di energia se ne intende.</p>
-    <div class="center" style="margin-top:28px"><a href="#modulo" class="btn">Fammi vedere la tua bolletta</a></div>
+    </div>
   </div>
 </section>
 
 <!-- 2. Tre motivi -->
-<section class="alt">
-  <div class="wrap">
-    <div class="head center"><h2>Cosa cambia quando le bollette le segue una persona</h2></div>
-    <div class="grid g3">
-      <div class="center-col">
+<section class="alt motivi">
+  <div class="wrap motivi-grid">
+    <div class="ph motivi-foto" role="img" aria-label="Segnaposto foto di Enrico con un cliente">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+      <span class="cap">Enrico con un cliente</span>
+    </div>
+    <div>
+      <h2>Cosa cambia quando le bollette le segue una persona</h2>
+      <div class="motivi-list">
+        <div class="center-col motivo">
         <div class="icon"><svg class="i" aria-hidden="true"><use href="#i-nome"/></svg></div>
         <h3>Hai un nome, non un numero verde.</h3>
         <p>Quando qualcosa non torna, chiami me. Conosco già la tua situazione, come il medico di famiglia: non devi rispiegare tutto da capo ogni volta.</p>
       </div>
-      <div class="center-col">
+        <div class="center-col motivo">
         <div class="icon"><svg class="i" aria-hidden="true"><use href="#i-segue"/></svg></div>
         <h3>Ti seguo anche dopo la firma.</h3>
         <p>Molti spariscono il giorno dopo il contratto. Io resto. Tengo d'occhio il mercato e, quando esce qualcosa di meglio per te, ti chiamo io.</p>
       </div>
-      <div class="center-col">
+        <div class="center-col motivo">
         <div class="icon"><svg class="i" aria-hidden="true"><use href="#i-scudook"/></svg></div>
         <h3>Ti dico anche quando non ti conviene cambiare.</h3>
         <p>Mi è successo più volte di dire a qualcuno: "Stai bene così, ci sentiamo alla scadenza". Preferisco un cliente che si fida a un contratto in più.</p>
+      </div>
       </div>
     </div>
   </div>
@@ -582,10 +587,26 @@
     </div>
     <p>Pensa al fruttivendolo. Se le mele all'ingrosso costano il doppio, non può vendertele allo stesso prezzo di prima. Con luce e gas succede la stessa cosa: le compagnie comprano l'energia su un mercato dove il prezzo cambia ogni giorno.</p>
     <p>Per questo chi ti promette "il 30% in meno" senza aver visto la tua bolletta, di solito recupera da un'altra parte.</p>
-    <div class="ph chart" role="img" aria-label="Segnaposto grafico illustrativo dell'andamento dei prezzi">
-      <svg viewBox="0 0 200 60" style="width:80%;height:auto;margin-bottom:60px" fill="none" stroke="currentColor" stroke-width="2"><rect x="0" y="0" width="45" height="60" fill="#dcdcdc" stroke="none"/><rect x="58" y="0" width="52" height="60" fill="#f4f4f4" stroke="none"/><path d="M0 40 C30 10, 50 10, 70 30 S110 55, 130 35 S170 5, 200 20"/><text x="8" y="56" font-size="6" fill="#777" stroke="none">proteggerti</text><text x="68" y="8" font-size="6" fill="#777" stroke="none">cambiare</text></svg>
-      <span class="cap todo">Grafico illustrativo, senza numeri. A cosa serve: far capire in un colpo d'occhio che il prezzo dell'energia sale e scende, e che la scelta giusta dipende dal momento. Come si legge: la linea è il prezzo nel tempo; nei tratti in discesa una fascia "momento per cambiare", nei tratti in salita una fascia "momento per proteggerti".</span>
-    </div>
+    <figure class="grafico" aria-label="Grafico illustrativo: il prezzo dell'energia sale e scende nel tempo. Quando sale è il momento di proteggerti, quando scende è il momento di cambiare.">
+      <svg viewBox="0 0 800 320" class="grafico-svg" aria-hidden="true">
+        <g class="zone">
+          <rect class="z-prot" x="40" y="40" width="170" height="230" rx="10"/>
+          <rect class="z-camb" x="210" y="40" width="190" height="230" rx="10"/>
+          <rect class="z-prot" x="400" y="40" width="170" height="230" rx="10"/>
+          <rect class="z-camb" x="570" y="40" width="190" height="230" rx="10"/>
+          <text class="zl zl-prot" x="125" y="66">Proteggerti</text>
+          <text class="zl zl-camb" x="305" y="66">Cambiare</text>
+          <text class="zl zl-prot" x="485" y="66">Proteggerti</text>
+          <text class="zl zl-camb" x="665" y="66">Cambiare</text>
+        </g>
+        <line class="asse" x1="40" y1="270" x2="760" y2="270"/>
+        <text class="al" x="760" y="296" text-anchor="end">tempo</text>
+        <text class="al" x="40" y="296">prezzo dell'energia</text>
+        <path id="curva" class="curva" d="M40 230 C110 230 150 110 210 105 S320 245 400 240 S500 95 570 100 S700 235 760 190"/>
+        <circle class="punto" r="9" cx="0" cy="0"><animateMotion id="moto" dur="6s" begin="indefinite" fill="freeze" rotate="0"><mpath href="#curva"/></animateMotion></circle>
+      </svg>
+      <figcaption class="grafico-cap">Grafico illustrativo, senza numeri: il prezzo sale e scende, la scelta giusta dipende dal momento.</figcaption>
+    </figure>
     <div class="market-cols">
       <div class="card"><h3><span class="arrow">↓</span> Quando i prezzi scendono</h3><p>È il momento di cambiare offerta o di bloccare un buon prezzo.</p></div>
       <div class="card"><h3><span class="arrow">↑</span> Quando i prezzi salgono</h3><p>L'obiettivo è proteggerti dai rincari, in attesa del momento giusto per muoverti.</p></div>
@@ -596,21 +617,21 @@
 </section>
 
 <!-- 6. Benefici -->
-<section class="alt">
+<section class="alt benefici">
   <div class="wrap">
     <div class="head center">
       <h2>Cosa cambia quando hai qualcuno che guarda le bollette con te</h2>
       <p class="lead">Non ti prometto cifre. Ti prometto che non sarai più solo davanti a una bolletta.</p>
     </div>
-    <div class="grid g3">
-      <div class="center-col only-attivita"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-margine"/></svg></div><h3>Proteggi il margine.</h3><p>Sai in anticipo quanto peseranno luce e gas sui tuoi costi, invece di scoprirlo a fine mese.</p></div>
-      <div class="center-col only-casa"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-capisci"/></svg></div><h3>Capisci cosa paghi.</h3><p>Ogni voce ha un senso e una spiegazione. Una bolletta alta smette di essere un mistero.</p></div>
+    <div class="bento">
+      <div class="center-col b-big only-attivita"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-margine"/></svg></div><h3>Proteggi il margine.</h3><p>Sai in anticipo quanto peseranno luce e gas sui tuoi costi, invece di scoprirlo a fine mese.</p></div>
+      <div class="center-col b-big only-casa"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-capisci"/></svg></div><h3>Capisci cosa paghi.</h3><p>Ogni voce ha un senso e una spiegazione. Una bolletta alta smette di essere un mistero.</p></div>
       <div class="center-col"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-occasioni"/></svg></div><h3>Non ti perdi le occasioni.</h3><p>Alcune offerte durano una settimana. Se fanno al caso tuo, ti chiamo prima che spariscano.</p></div>
       <div class="center-col only-attivita"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-referente"/></svg></div><h3>Un solo referente per tutto.</h3><p>Sede, magazzino, punto vendita: tutte le forniture seguite da una persona sola.</p></div>
       <div class="center-col only-casa"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-tempo"/></svg></div><h3>Ti riprendi il tuo tempo.</h3><p>Una telefonata con me al posto di un pomeriggio al centralino. Il tempo è denaro, il tuo soprattutto.</p></div>
       <div class="center-col"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-misura"/></svg></div><h3>Un contratto su misura.</h3><p>Scelto in base a quanto e come consumi, non all'offerta del mese.</p></div>
       <div class="center-col"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-sorprese"/></svg></div><h3>Meno brutte sorprese.</h3><p>Conguagli, letture stimate, consumi strani: li guardiamo insieme appena arriva la bolletta.</p></div>
-      <div class="center-col"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-telefono"/></svg></div><h3>Qualcuno da chiamare.</h3><p>Anche tra un anno, anche per un dubbio piccolo.</p></div>
+      <div class="center-col b-wide"><div class="icon"><svg class="i" aria-hidden="true"><use href="#i-telefono"/></svg></div><h3>Qualcuno da chiamare.</h3><p>Anche tra un anno, anche per un dubbio piccolo.</p></div>
     </div>
   </div>
 </section>
@@ -972,19 +993,40 @@
   // Nota di Enrico sulla foto dell'hero
   var hp=document.querySelector('.hero .ph');
   if(hp)hp.insertAdjacentHTML('beforeend','<div class="nota">Mandami la bolletta: te la spiego io, riga per riga.<small>Enrico</small></div>');
-  // Bolletta annotata (esempio)
+  // Bolletta realistica (esempio)
   var b=document.querySelector('.billgrid .bill');
   if(b){
-    b.className='bill foglio';
-    b.setAttribute('aria-label','Esempio di bolletta con i cinque punti che controllo');
-    b.innerHTML='<div class="foglio__testa"><span><strong>Bolletta luce</strong>, ottobre</span><span>Totale <strong>148,60 €</strong></span></div>'+
-      '<div class="riga"><span><span class="riga__n">1</span>Prezzo dell\'energia</span><b><span class="evidenzia leggero">0,148 €/kWh</span></b></div>'+
-      '<div class="riga"><span><span class="riga__n">2</span>Quota fissa di vendita</span><b><span class="evidenzia">16,00 €/mese</span></b></div>'+
-      '<div class="riga"><span><span class="riga__n">3</span>Consumo del periodo</span><b>312 kWh</b></div>'+
-      '<div class="riga"><span><span class="riga__n">4</span>Altre partite</span><b><span class="evidenzia leggero">40,00 €</span></b></div>'+
-      '<div class="riga"><span><span class="riga__n">5</span>Scadenza dell\'offerta</span><b>31/01/2027</b></div>'+
-      '<div class="nota">Il prezzo al kWh sembra basso, ma la quota fissa è il doppio del normale. Qui ti riprendono tutto.<small>Enrico</small></div>'+
-      '<span class="foglio__esempio todo">Esempio: da sostituire con una bolletta vera di Enrico, anonimizzata.</span>';
+    b.className='bill bolla';
+    b.setAttribute('role','img');
+    b.setAttribute('aria-label','Esempio di bolletta luce con evidenziati i cinque punti che controllo');
+    b.innerHTML=
+     '<div class="bolla-top"><div class="bolla-forn"><span class="bolla-marchio"></span><span><b>Fornitore Energia S.p.A.</b><br>Bolletta per la fornitura di energia elettrica</span></div><div class="bolla-n">N. 2026/0418273<br>Emessa il 04/11/2026</div></div>'+
+     '<div class="bolla-cli"><div><span>Intestatario</span><b>Mario R.</b></div><div><span>Codice POD</span><b>IT001E••••••••</b></div><div><span>Periodo</span><b>01/10 – 31/10/2026</b></div></div>'+
+     '<div class="bolla-tot"><div><span>Totale da pagare</span><b>148,60 €</b></div><div><span>Scadenza</span><b>24/11/2026</b></div></div>'+
+     '<table class="bolla-tab"><tbody>'+
+     '<tr data-n="1"><td><i class="pin">1</i>Spesa per la materia energia</td><td><mark class="hl-l">0,148 €/kWh</mark></td></tr>'+
+     '<tr data-n="2"><td><i class="pin">2</i>Quota fissa di vendita</td><td><mark class="hl">16,00 €/mese</mark></td></tr>'+
+     '<tr data-n="3"><td><i class="pin">3</i>Consumo fatturato (stimato)</td><td>312 kWh</td></tr>'+
+     '<tr><td>Spesa per il trasporto e oneri</td><td>41,20 €</td></tr>'+
+     '<tr data-n="4"><td><i class="pin">4</i>Altre partite: attivazione</td><td><mark class="hl-l">40,00 €</mark></td></tr>'+
+     '<tr data-n="5"><td><i class="pin">5</i>Condizioni economiche valide fino al</td><td>31/01/2027</td></tr>'+
+     '</tbody></table>'+
+     '<div class="bolla-codice" aria-hidden="true"></div>'+
+     '<div class="bolla-nota">Prezzo basso, quota fissa doppia: qui ti riprendono tutto.<small>Enrico</small></div>';
+    var cl=document.querySelectorAll('.checklist li');
+    cl.forEach(function(li,k){
+      li.setAttribute('data-n',k+1);
+      function on(v){var r=b.querySelector('tr[data-n="'+(k+1)+'"]');if(r)r.classList.toggle('attiva',v);li.classList.toggle('attiva',v);}
+      li.addEventListener('mouseenter',function(){on(true)});li.addEventListener('mouseleave',function(){on(false)});
+    });
+    var es=document.createElement('p');es.className='bolla-esempio todo';es.textContent='Esempio: da sostituire con una bolletta vera di Enrico, anonimizzata.';
+    b.parentNode.insertAdjacentElement('afterend',es);
+  }
+  // Grafico animato: parte quando entra nello schermo
+  var g=document.querySelector('.grafico');
+  if(g){
+    var avvia=function(){g.classList.add('vai');var m=document.getElementById('moto');if(m&&m.beginElement&&!matchMedia('(prefers-reduced-motion: reduce)').matches){setTimeout(function(){m.beginElement()},300);}};
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){avvia();io.disconnect();}},{threshold:.4});io.observe(g);}else{avvia();}
   }
   // Icone contatti
   var ci=['tel','mail','pin','ora'];
