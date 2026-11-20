@@ -412,3 +412,4 @@ section h2{font-size:clamp(2rem,3.8vw,2.9rem)}
 .video + .micro{margin-top:44px}
 .billgrid + .bolla-esempio{text-align:center;margin-top:36px}
 #come-lavoro .tnum{top:-10px}
+.trust li{font-weight:700;color:var(--foglia-700)}
