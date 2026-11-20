@@ -544,3 +544,102 @@ section h2{font-size:clamp(2rem,3.8vw,2.9rem)}
 #bolletta + section .market-cols .card{background:none;border:0;box-shadow:none;padding:0}
 #bolletta + section .market-cols .card h3{display:flex;align-items:center;gap:12px}
 #bolletta + section .market-cols .arrow{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.1);font-size:1.3rem}
+
+/* ===== Ritocchi 3 ===== */
+/* Più aria sopra e sotto ogni sezione */
+section:not(.hero):not(.switch){padding:128px 0}
+.problem,.motivi{padding:128px 0}
+.hero{padding:72px 0 120px}
+.switch{padding:88px 0}
+.head{margin-bottom:72px}
+@media (max-width:820px){section:not(.hero):not(.switch),.problem,.motivi{padding:88px 0}.head{margin-bottom:48px}}
+@media (max-width:600px){section:not(.hero):not(.switch),.problem,.motivi{padding:72px 0}.hero{padding:24px 0 72px}.switch{padding:64px 0}}
+
+/* Grafico: fasce con angoli vivi, tooltip fissi sopra ogni fascia */
+.zr{rx:0;ry:0}
+.zr.vis{opacity:.2}
+.zr.on{opacity:.34}
+.zl{opacity:.35}
+.zl.vis{opacity:1}
+.tip{position:absolute;top:0;width:21%;max-width:none;text-align:center;transform:translate(-50%,10px);opacity:0;transition:opacity .6s ease,transform .6s ease;padding:11px 12px;font-size:.9rem}
+.tip.show{opacity:1;transform:translate(-50%,0)}
+.tip[data-z="0"]{left:15.6%}.tip[data-z="1"]{left:38.1%}.tip[data-z="2"]{left:60.6%}.tip[data-z="3"]{left:83.1%}
+.alone{animation:alone 1.4s ease-in-out infinite}
+@keyframes alone{0%,100%{opacity:.15}50%{opacity:.5}}
+@media (max-width:900px){.tip{font-size:.78rem;padding:8px 8px}}
+@media (max-width:600px){
+  .tip{position:static;width:auto;transform:none;display:none;margin:10px 0 0;font-size:.95rem;text-align:center}
+  .tip.show[data-z="0"],.tip.show[data-z="1"]{display:block;opacity:1}
+  .tip:after{display:none}
+}
+
+/* Frase di chiusura del mercato: più larga, a callout */
+#bolletta + section .closing{max-width:none;text-align:left;margin:64px 0 0;padding:40px 44px;border-radius:24px;border-left:6px solid var(--watt-400);background:linear-gradient(100deg,rgba(252,174,0,.16),rgba(252,174,0,.04));color:var(--watt-100);font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.4}
+#bolletta + section .source{margin-top:28px}
+#bolletta + section .market-cols{margin:48px 0 0}
+
+/* Chi sono */
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+.about-foto{aspect-ratio:4/5;min-height:0;border-radius:32px;box-shadow:-24px 24px 0 var(--cielo-400);background:var(--bruma)}
+.about h2{text-align:left;margin:0 0 28px;max-width:16ch}
+.chips{list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.chips li{display:grid;grid-template-columns:48px 1fr;column-gap:12px;align-items:center;background:var(--bruma);border-radius:20px;padding:14px 16px}
+.chips .icon{grid-row:1/span 2;width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#398912,#186d1f);color:var(--bianco);box-shadow:none}
+.chips .icon .i{width:24px;height:24px}
+.chips b{font-family:var(--font-display);font-size:1.05rem;line-height:1.15;color:var(--notte-900);align-self:end}
+.chips small{font-size:.9rem;line-height:1.25;color:var(--testo-tenue);align-self:start}
+.about-txt p{max-width:60ch}
+.about .about-quote{font-family:var(--font-display);font-size:1.35rem;line-height:1.35;font-weight:600;color:var(--notte-900);padding:6px 0 6px 22px;border-left:5px solid var(--foglia-500);margin:32px 0 20px}
+.about .about-quote b{background:linear-gradient(95deg,#4f9400,#186d1f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@media (max-width:1024px){.about-grid{gap:48px}.chips{grid-template-columns:1fr}}
+@media (max-width:820px){.about-grid{grid-template-columns:1fr}.about-foto{aspect-ratio:16/11;box-shadow:-12px 12px 0 var(--cielo-400);margin-left:12px}.chips{grid-template-columns:1fr}}
+
+/* Offerta: pannello a tutta larghezza del layout */
+.offer{max-width:none;margin:0;text-align:left;display:grid;grid-template-columns:6fr 5fr;gap:56px;align-items:center;padding:72px 64px;border-radius:32px}
+.offer h2{text-align:left;margin:0 0 20px;max-width:14ch}
+.offer .lead{margin:0 0 32px;font-size:1.25rem;max-width:34ch}
+.offer .micro{margin:20px 0 0;font-size:.98rem}
+.offer .ticks{display:grid;margin:0;padding:32px;gap:18px;background:var(--bianco);border-radius:24px;box-shadow:0 24px 50px -24px rgba(1,38,74,.5)}
+.offer .ticks li{color:var(--notte-900);font-size:1.08rem;align-items:center}
+.offer .ticks li:before{flex:0 0 32px;height:32px;border-radius:10px;background:linear-gradient(145deg,#398912,#186d1f);color:var(--bianco);font-size:.95rem;margin:0}
+@media (max-width:900px){.offer{grid-template-columns:1fr;gap:36px;padding:44px 28px}}
+@media (max-width:600px){.offer{padding:32px 20px;border-radius:24px}.offer .ticks{padding:22px 18px}}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:4fr 8fr;gap:80px;align-items:start}
+.faq-side{position:sticky;top:120px}
+.faq-side h2{text-align:left;margin:0 0 32px;max-width:10ch}
+.faq{max-width:none;margin:0;gap:0;display:block}
+.faq details{border:0;border-bottom:1px solid var(--linea);border-radius:0;box-shadow:none;background:none;padding:0}
+.faq details[open]{background:none}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 0;font-size:1.3rem;line-height:1.25;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";flex:0 0 44px;height:44px;border-radius:14px;background:var(--foglia-100);color:var(--foglia-700);display:flex;align-items:center;justify-content:center;font:600 1.6rem/1 var(--font-body);position:static;transition:background-color .2s,color .2s}
+.faq details[open] summary:after{content:"−";background:var(--foglia-700);color:var(--bianco)}
+.faq .ans{padding:0 68px 30px 0;font-size:1.1rem;max-width:62ch}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:36px}.faq-side{position:static}.faq summary{font-size:1.15rem;padding:22px 0}.faq .ans{padding-right:0}}
+
+/* Modulo: stessa larghezza del layout, testo a sinistra */
+#modulo{background:var(--bruma)}
+.modulo-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.modulo-side{position:sticky;top:120px}
+.modulo-side h2{text-align:left;margin:0 0 20px;max-width:12ch}
+.modulo-side .lead{margin:0 0 36px;max-width:30ch}
+.rassicura{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.rassicura li{display:flex;align-items:center;gap:16px;font-weight:600;color:var(--notte-900)}
+.rassicura .icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#398912,#186d1f);color:var(--bianco);box-shadow:none}
+.rassicura .icon .i{width:24px;height:24px}
+.modulo-grid .formbox{max-width:none;margin:0}
+@media (max-width:900px){.modulo-grid{grid-template-columns:1fr;gap:36px}.modulo-side{position:static}}
+.faq summary:after{right:auto;top:auto;transform:none}
+#bolletta + section .closing{margin:72px 0 0!important;border-left:0;box-shadow:inset 6px 0 0 var(--watt-400)}
+@media (max-width:820px){.about-grid,.faq-grid,.modulo-grid,.prob-grid,.motivi-grid{grid-template-columns:minmax(0,1fr)}.about-foto{min-width:0;margin:0 0 0 12px}}
+@media (max-width:600px){#bolletta + section .closing{padding:28px 24px;margin-top:48px!important}}
+@media (max-width:600px){
+  .tip,.tip.show,.tip[data-z]{left:auto;transform:none}
+  .tip{width:auto}
+  .zl{font-size:25px}
+  .grafico{padding:14px 14px 12px}
+}
+.about .about-foto{min-height:0}
+@media (max-width:820px){.about .about-foto{width:calc(100% - 12px);min-height:0;aspect-ratio:16/11}}
