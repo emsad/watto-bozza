@@ -1,5 +1,6 @@
 /* Watto: strato grafico sopra il wireframe. Attivo solo con ?grafica nell'indirizzo. */
 
+@font-face{font-family:"Exo 2";src:url(fonts/Exo2-ExtraBoldItalic.woff2) format("woff2");font-weight:800;font-style:italic;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(fonts/BricolageGrotesque-Variable.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
 @font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-Italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
@@ -872,3 +873,10 @@ b,strong{font-weight:700}
   .chips b{font-size:.88rem!important;line-height:1.15}
   .chips small{font-size:.74rem!important;line-height:1.2}
 }
+
+/* ===== Titolo hero: carattere vicino al logo (Exo 2 ExtraBold Italic) ===== */
+.hero h1{font-family:"Exo 2","Bricolage Grotesque",sans-serif;font-style:italic;font-weight:800;letter-spacing:-.015em;line-height:1.06;font-variation-settings:normal}
+.hero h1 .verde{padding-right:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media (min-width:821px){.hero h1{font-size:clamp(2.3rem,4vw,3.6rem)}}
+@media (max-width:820px){.hero h1{font-size:clamp(2.1rem,8.4vw,3rem)}}
+@media (max-width:820px){.hero h1{text-wrap:balance;font-size:clamp(2rem,8vw,2.8rem)}}
