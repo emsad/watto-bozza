@@ -14,7 +14,7 @@
   --cielo-400:#00a8ea; --cielo-700:#0060d8; --cielo-100:#def3fc;
   --foglia-300:#7eb400; --foglia-500:#398912; --foglia-700:#186d1f; --foglia-100:#ecf6dc;
   --bianco:#fff; --bruma:#eef5fa; --testo:#2b3a52; --testo-tenue:#5a6a80; --linea:#d5e2ec; --bordo-campo:#6f849c;
-  --font-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --font-display:"Figtree","Bricolage Grotesque",system-ui,sans-serif;
   --font-body:"Atkinson Hyperlegible Next",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ombra-flottante:0 10px 30px rgba(1,38,74,.18);
   --ombra-foglio:0 2px 0 rgba(1,38,74,.06),0 12px 24px rgba(1,38,74,.08);
@@ -891,3 +891,9 @@ b,strong{font-weight:700}
 .hero h1{font-family:"Figtree",sans-serif;font-weight:900;font-stretch:normal;letter-spacing:-.025em;line-height:1.04}
 @media (min-width:821px){.hero h1{font-size:clamp(2.4rem,4.4vw,3.9rem)}}
 @media (max-width:820px){.hero h1{font-size:clamp(2.1rem,8.6vw,3rem)}}
+
+/* ===== Tutti i titoli in Figtree, dritto ===== */
+h1,h2,h3,h4{font-family:var(--font-display);font-style:normal;font-variation-settings:normal;font-stretch:normal}
+h1,h2{font-weight:800;letter-spacing:-.012em}
+h3,h4{font-weight:700;letter-spacing:-.005em}
+.hero h1{font-style:normal;font-weight:800;letter-spacing:-.012em;line-height:1.04}
