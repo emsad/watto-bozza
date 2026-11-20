@@ -754,11 +754,11 @@
               <label><input type="radio" name="spesa" value="200+"> Oltre 200 €</label>
             </div>
             <div class="opt row" id="spesa-att" hidden>
-              <label><input type="radio" name="spesa" value="0-500"> Fino a 500 €</label>
-              <label><input type="radio" name="spesa" value="500-2000"> Da 500 a 2.000 €</label>
-              <label><input type="radio" name="spesa" value="2000+"> Oltre 2.000 €</label>
+              <label><input type="radio" name="spesa" value="0-1000"> Fino a 1.000 €</label>
+              <label><input type="radio" name="spesa" value="1000-3000"> Da 1.000 a 3.000 €</label>
+              <label><input type="radio" name="spesa" value="3000-10000"> Da 3.000 a 10.000 €</label>
+              <label><input type="radio" name="spesa" value="10000+"> Oltre 10.000 €</label>
             </div>
-            <span class="verify" id="spesa-verify" hidden>Enrico: conferma queste fasce di spesa per le attività</span>
           </fieldset>
           <p class="err" role="alert">Scrivi il tuo fornitore e scegli quanto spendi.</p>
         </div>
@@ -844,7 +844,7 @@
 <footer>
   <div class="wrap">
     <span class="logo">LOGO</span>
-    <span>© 2026 Watto di Enrico Lizzani · P.IVA <span class="todo">[Enrico: P.IVA]</span> · Privacy · Cookie</span>
+    <span>© 2026 Watto di Enrico Lizzani · P.IVA 15769261007 · Privacy · Cookie</span>
   </div>
 </footer>
 
@@ -876,7 +876,6 @@
     var att=t && t.value!=='casa';
     document.getElementById('spesa-casa').hidden=!!att;
     document.getElementById('spesa-att').hidden=!att;
-    document.getElementById('spesa-verify').hidden=!att;
     document.getElementById('field-azienda').hidden=!att;
     var sel=form.querySelector('input[name=spesa]:checked');
     if(sel && sel.closest('[hidden]')) sel.checked=false;
