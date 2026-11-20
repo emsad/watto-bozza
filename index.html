@@ -332,7 +332,7 @@
     .closing{text-align:left}
   }
 </style>
-<link rel="stylesheet" href="watto.css?v=20261120x" media="not all" id="grafica-css">
+<link rel="stylesheet" href="watto.css?v=20261121b" media="not all" id="grafica-css">
 <script>if(!/[?&]wireframe/.test(location.search)){document.getElementById('grafica-css').media='all';document.documentElement.className+=' grafica';}</script>
 </head>
 <body data-target="casa">
@@ -588,13 +588,13 @@
     <p>Pensa al fruttivendolo. Se le mele all'ingrosso costano il doppio, non può vendertele allo stesso prezzo di prima. Con luce e gas succede la stessa cosa: le compagnie comprano l'energia su un mercato dove <b>il prezzo cambia ogni giorno</b>.</p>
     <p>Per questo chi ti promette "il 30% in meno" senza aver visto la tua bolletta, <b>di solito recupera da un'altra parte</b>.</p>
     <figure class="grafico" aria-label="Grafico illustrativo: il prezzo dell'energia sale e scende nel tempo. Quando sale è il momento di proteggerti, quando scende è il momento di cambiare.">
-      <div class="grafico-box"><svg viewBox="0 0 800 400" class="grafico-svg" aria-hidden="true">
+      <div class="grafico-box"><svg viewBox="0 0 800 350" class="grafico-svg" aria-hidden="true">
         <defs>
           <linearGradient id="g-linea" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#00a8ea"/><stop offset="1" stop-color="#7fe3ff"/></linearGradient>
           <linearGradient id="g-area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00a8ea" stop-opacity=".42"/><stop offset="1" stop-color="#00a8ea" stop-opacity="0"/></linearGradient>
           <clipPath id="c-area"><rect id="c-area-r" x="0" y="0" width="0" height="320"/></clipPath>
         </defs>
-        <g transform="translate(0 30)">
+        <g transform="translate(0 -20)">
         <g class="zone">
           <rect class="zr z-prot" x="40" y="40" width="170" height="290" />
           <rect class="zr z-camb" x="210" y="40" width="190" height="290" />
@@ -1057,7 +1057,7 @@ document.querySelectorAll('.faq details').forEach(function(d){d.addEventListener
     anc.forEach(function(q,i){
       var z=zx[i],c=Math.min(Math.max(q[0],z[0]+W/2),z[1]-W/2),sotto=(i%2==1);
       plen[i]=q[2];
-      tips[i].style.left=(c/8)+'%';tips[i].style.top=((q[1]+30)/4)+'%';
+      tips[i].style.left=(c/8)+'%';tips[i].style.top=((q[1]-20)/3.5)+'%';
       tips[i].style.setProperty('--ax',(50+(q[0]-c)/W*100)+'%');
       tips[i].classList.toggle('sotto',sotto);
     });
