@@ -332,6 +332,8 @@
     .closing{text-align:left}
   }
 </style>
+<link rel="stylesheet" href="watto.css" media="not all" id="grafica-css">
+<script>if(/[?&]grafica/.test(location.search)){document.getElementById('grafica-css').media='all';document.documentElement.className+=' grafica';}</script>
 </head>
 <body data-target="casa">
 
@@ -947,6 +949,45 @@
   if(ref){document.getElementById('segnalatore').value=ref;}
   syncCosa();
   show(1);
+})();
+// Strato grafico (solo con ?grafica)
+(function(){
+  if(!document.documentElement.classList.contains('grafica'))return;
+  var I={
+    wa:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>',
+    tel:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+    mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+    pin:'<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+    ora:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'
+  };
+  function ic(n){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+I[n]+'</svg>';}
+  // Logo
+  document.querySelectorAll('.logo').forEach(function(l){l.innerHTML='<img src="img/watto-logo.webp" width="640" height="282" alt="Watto, consulenza energetica">';l.setAttribute('aria-label','Watto, torna all\'inizio');});
+  // Icone WhatsApp
+  document.querySelectorAll('.wa-icon,.wa-float').forEach(function(a){a.innerHTML=ic('wa');});
+  // Barra bozza
+  var db=document.querySelector('.draftbar .wrap > div');
+  if(db)db.innerHTML='<b>Bozza grafica.</b> Foto, video e grafico arriveranno con il materiale di Enrico.';
+  // Nota di Enrico sulla foto dell'hero
+  var hp=document.querySelector('.hero .ph');
+  if(hp)hp.insertAdjacentHTML('beforeend','<div class="nota">Mandami la bolletta: te la spiego io, riga per riga.<small>Enrico</small></div>');
+  // Bolletta annotata (esempio)
+  var b=document.querySelector('.billgrid .bill');
+  if(b){
+    b.className='bill foglio';
+    b.setAttribute('aria-label','Esempio di bolletta con i cinque punti che controllo');
+    b.innerHTML='<div class="foglio__testa"><span><strong>Bolletta luce</strong>, ottobre</span><span>Totale <strong>148,60 €</strong></span></div>'+
+      '<div class="riga"><span><span class="riga__n">1</span>Prezzo dell\'energia</span><b><span class="evidenzia leggero">0,148 €/kWh</span></b></div>'+
+      '<div class="riga"><span><span class="riga__n">2</span>Quota fissa di vendita</span><b><span class="evidenzia">16,00 €/mese</span></b></div>'+
+      '<div class="riga"><span><span class="riga__n">3</span>Consumo del periodo</span><b>312 kWh</b></div>'+
+      '<div class="riga"><span><span class="riga__n">4</span>Altre partite</span><b><span class="evidenzia leggero">40,00 €</span></b></div>'+
+      '<div class="riga"><span><span class="riga__n">5</span>Scadenza dell\'offerta</span><b>31/01/2027</b></div>'+
+      '<div class="nota">Il prezzo al kWh sembra basso, ma la quota fissa è il doppio del normale. Qui ti riprendono tutto.<small>Enrico</small></div>'+
+      '<span class="foglio__esempio todo">Esempio: da sostituire con una bolletta vera di Enrico, anonimizzata.</span>';
+  }
+  // Icone contatti
+  var ci=['tel','mail','pin','ora'];
+  document.querySelectorAll('#contatti .clist .ic').forEach(function(s,i){if(ci[i])s.innerHTML=ic(ci[i]);});
 })();
 </script>
 </body>

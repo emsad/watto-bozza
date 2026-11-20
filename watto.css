@@ -1,0 +1,208 @@
+/* Watto: strato grafico sopra il wireframe. Attivo solo con ?grafica nell'indirizzo. */
+
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/BricolageGrotesque-Variable.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-Italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url(fonts/AtkinsonHyperlegibleNext-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --notte-900:#01264a; --notte-700:#1f4472; --notte-300:#b9c7d8;
+  --watt-400:#fcae00; --watt-500:#e89f00; --watt-100:#fff1cc;
+  --cielo-400:#00a8ea; --cielo-700:#0060d8; --cielo-100:#def3fc;
+  --foglia-300:#7eb400; --foglia-500:#398912; --foglia-700:#186d1f; --foglia-100:#ecf6dc;
+  --bianco:#fff; --bruma:#eef5fa; --testo:#2b3a52; --testo-tenue:#5a6a80; --linea:#d5e2ec; --bordo-campo:#6f849c;
+  --font-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --font-body:"Atkinson Hyperlegible Next",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ombra-flottante:0 10px 30px rgba(1,38,74,.18);
+  --ombra-foglio:0 2px 0 rgba(1,38,74,.06),0 12px 24px rgba(1,38,74,.08);
+  /* variabili del wireframe rimappate */
+  --ink:var(--notte-900); --text:var(--testo); --muted:var(--testo-tenue); --line:var(--linea);
+  --ph:var(--bruma); --ph-ink:var(--testo-tenue); --soft:var(--bruma); --radius:20px;
+}
+
+body{font-family:var(--font-body);font-size:18px;line-height:1.6;color:var(--testo)}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--notte-900)}
+h1{font-size:clamp(2.25rem,4.6vw,3.5rem);line-height:1.04;font-weight:720;letter-spacing:-.02em;font-variation-settings:"opsz" 96}
+h2{font-size:clamp(1.875rem,3.4vw,2.5rem);line-height:1.1;font-weight:680;letter-spacing:-.015em;font-variation-settings:"opsz" 72}
+h3{font-size:clamp(1.3rem,1.8vw,1.5rem);line-height:1.2;font-weight:650;letter-spacing:-.005em}
+.head h2{max-width:22ch;margin-left:auto;margin-right:auto}
+.lead{font-size:1.15rem;line-height:1.5;color:var(--testo)}
+a{color:inherit}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--cielo-700);outline-offset:2px}
+
+/* Barra bozza */
+.draftbar{background:var(--notte-900)}
+.draftbar .legend span{color:#ffb3a8}
+
+/* Pulsanti: giallo per l'azione principale */
+.btn{font-family:var(--font-body);border-radius:12px;min-height:52px;padding:12px 24px;font-size:1.05rem;background:var(--watt-400);border-color:var(--watt-400);color:var(--notte-900);transition:background-color .15s,border-color .15s}
+.btn:hover{transform:none;background:var(--watt-500);border-color:var(--watt-500)}
+.btn.ghost{background:var(--bianco);border-color:var(--notte-900);color:var(--notte-900)}
+.btn.ghost:hover{background:var(--bruma)}
+.btn.sm{min-height:44px;padding:8px 18px;font-size:.95rem}
+.hero .btn{min-height:60px;padding:16px 28px;font-size:1.15rem}
+.micro{font-size:1rem;color:var(--testo-tenue)}
+
+/* Header e logo */
+header.site{background:rgba(255,255,255,.97);border-bottom-color:var(--linea)}
+header.site .wrap{height:80px}
+.logo{border:0;padding:0;display:inline-flex;align-items:center}
+.logo img{display:block;height:52px;width:auto}
+.mainnav a{color:var(--testo)}
+.mainnav a:hover{color:var(--notte-900)}
+.wa-icon{border-color:var(--notte-900);color:var(--notte-900)}
+.wa-icon svg,.wa-float svg{width:22px;height:22px}
+.wa-float{background:var(--notte-900);box-shadow:var(--ombra-flottante)}
+.wa-float svg{width:28px;height:28px}
+
+/* Segnaposto foto: azzurro chiarissimo, non grigio */
+.ph{background:var(--bruma);color:var(--testo-tenue);border-radius:20px}
+.ph svg{opacity:.35;color:var(--notte-300)}
+
+/* Hero */
+.hero{padding:64px 0 88px}
+@media (min-width:821px){.hero-grid{grid-template-columns:7fr 5fr}}
+.hero .eyebrow{font-size:1.2rem;font-weight:400;color:var(--testo);max-width:34ch;margin-bottom:1em}
+.hero h1{max-width:13ch}
+.slogan{font-family:var(--font-display);text-transform:none;letter-spacing:0;font-size:1.5rem;font-weight:650;margin:0 0 .8em;color:var(--notte-900)}
+.hero .ph{border-radius:32px;position:relative;overflow:visible}
+.hero .ph .cap{bottom:auto;top:16px}
+.nota{background:var(--watt-100);border-radius:8px 20px 20px 20px;padding:12px 14px;font-style:italic;font-size:1.05rem;line-height:1.45;color:var(--notte-900);text-align:left;font-weight:400}
+.nota small{display:block;font-style:normal;font-size:.95rem;color:var(--testo-tenue);margin-top:4px}
+.hero .nota{position:absolute;left:-44px;bottom:40px;max-width:260px;box-shadow:var(--ombra-foglio)}
+
+/* Selettore casa / attività */
+.switch{background:var(--bianco);border-color:var(--linea)}
+.switch-q{font-family:var(--font-display);font-weight:650;font-size:1.4rem}
+.seg{border-color:var(--notte-900)}
+.seg button{font-family:var(--font-body);font-weight:600;color:var(--notte-900);min-height:44px}
+.seg button[aria-pressed="true"]{background:var(--notte-900);color:var(--bianco)}
+
+/* Schede e icone */
+.card,.pcard,.checklist li,.tstep{border-color:var(--linea);border-radius:20px}
+.icon{background:var(--watt-100)}
+.icon svg{opacity:1;color:var(--notte-900);width:24px;height:24px}
+.pcard .icon{background:var(--watt-100)}
+.closing{font-family:var(--font-display);font-weight:600;font-size:1.35rem;line-height:1.35;color:var(--notte-900)}
+
+/* Video */
+.video{background:var(--notte-900)}
+.video .play{background:var(--watt-400)}
+.video .play:after{border-left-color:var(--notte-900)}
+.video .cap.todo{background:#fff;border-radius:10px;padding:8px 10px}
+
+/* Obiezioni come chat */
+.q{background:var(--bianco);border:1px solid var(--linea)}
+.q p{font-family:var(--font-display);font-weight:600}
+.a{background:var(--watt-100);border:0}
+.a p{color:var(--notte-900)}
+.who-l{text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600}
+
+/* Come lavoro */
+.timeline:before{border-top-color:var(--bordo-campo)}
+.tnum{background:var(--notte-900);color:var(--watt-400);font-family:var(--font-display)}
+.ttag{background:var(--bruma);color:var(--notte-900)}
+.tag{text-transform:none;letter-spacing:0;font-size:.95rem;border-color:var(--linea);color:var(--testo-tenue)}
+.afterband{border:0;background:var(--bruma)}
+
+/* La bolletta annotata */
+.checklist .n{border:0;background:var(--notte-900);color:var(--watt-400);font-family:var(--font-display)}
+.checklist li h3{font-size:1.2rem}
+.bill.foglio{display:block;background:var(--bianco);border:1px solid var(--linea);border-radius:20px;box-shadow:var(--ombra-foglio);padding:24px 24px 16px;color:var(--testo);text-align:left;font-weight:400;font-size:17px;min-height:0}
+.foglio__testa{display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--linea);color:var(--testo-tenue);font-size:16px}
+.foglio__testa strong{color:var(--notte-900)}
+.riga{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px dashed var(--linea)}
+.riga:last-of-type{border-bottom:0}
+.riga__n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--notte-900);color:var(--watt-400);font:700 13px/1 var(--font-body);margin-right:8px;vertical-align:2px}
+.riga b{color:var(--notte-900);font-variant-numeric:tabular-nums;white-space:nowrap}
+.evidenzia{background:linear-gradient(transparent 12%,var(--watt-400) 12%,var(--watt-400) 88%,transparent 88%);padding:0 .2em;margin:0 -.2em;border-radius:3px}
+.evidenzia.leggero{background:linear-gradient(transparent 12%,var(--watt-100) 12%,var(--watt-100) 88%,transparent 88%)}
+.foglio .nota{margin-top:14px}
+.foglio__esempio{display:block;margin-top:10px;font-size:14px;color:var(--testo-tenue)}
+
+/* Mercato: sezione scura */
+#bolletta + section{background:var(--notte-900);color:#e3eaf2}
+#bolletta + section h2,#bolletta + section h3{color:var(--bianco)}
+#bolletta + section .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+#bolletta + section .card p{color:#e3eaf2}
+#bolletta + section .arrow{color:var(--watt-400)}
+#bolletta + section .market-cols .card:first-child .arrow{color:var(--foglia-300)}
+#bolletta + section .closing{color:var(--bianco)}
+#bolletta + section .ph.chart{background:rgba(255,255,255,.06);color:var(--notte-300)}
+#bolletta + section .ph.chart svg{opacity:.8;color:var(--cielo-400)}
+#bolletta + section .ph.chart .cap.todo{background:#fff;border-radius:10px;padding:8px 10px}
+#bolletta + section .source,#bolletta + section .source a{color:#7f93aa}
+
+/* Benefici */
+.center-col h3{font-size:1.25rem}
+
+/* Chi sono */
+.signature{font-family:var(--font-display);font-weight:650;font-size:1.15rem}
+
+/* Offerta: l'unico blocco giallo */
+.offer{background:var(--watt-400);border-radius:32px}
+.offer h2,.offer .lead,.offer .ticks li{color:var(--notte-900)}
+.offer .ticks li:before{background:var(--notte-900);color:var(--watt-400)}
+.offer .btn{background:var(--notte-900);border-color:var(--notte-900);color:var(--bianco)}
+.offer .btn:hover{background:var(--notte-700);border-color:var(--notte-700)}
+.offer .btn:focus-visible{outline-color:var(--notte-900)}
+.offer .micro{color:var(--notte-900)}
+
+/* FAQ */
+details{border-color:var(--linea);border-radius:14px}
+details[open]{border-color:var(--notte-900)}
+summary{font-family:var(--font-display);font-weight:650;font-size:1.12rem}
+summary:after{color:var(--notte-900)}
+
+/* Modulo */
+#modulo{background:var(--bruma)}
+.formbox{border:0;box-shadow:var(--ombra-flottante);border-radius:24px}
+.progress span{background:var(--linea)}
+.progress span.on{background:var(--watt-400)}
+.formstep h3{font-size:1.5rem}
+legend,.field label{font-family:var(--font-body);font-weight:600;color:var(--notte-900)}
+.opt label{border:2px solid var(--linea);border-radius:12px;min-height:52px}
+.opt label:has(input:checked){border-color:var(--notte-900);background:var(--watt-100)}
+.opt input,.check input{accent-color:var(--notte-900)}
+.field input[type=text],.field input[type=tel],.field input[type=email]{border:2px solid var(--bordo-campo);border-radius:12px;min-height:52px;font-size:1.05rem;color:var(--notte-900)}
+.field input:focus{border-color:var(--notte-900);outline:3px solid var(--cielo-700);outline-offset:2px}
+.upload{border:2px dashed var(--bordo-campo);background:var(--bianco);border-radius:20px}
+.err{color:#c0392b;background:#fdecea;border-radius:8px;padding:8px 10px}
+.thanks h3{color:var(--foglia-700)}
+
+/* Contatti: chiusura scura */
+#contatti{background:var(--notte-900);color:#e3eaf2}
+#contatti h2,#contatti h3{color:var(--bianco)}
+#contatti .lead{color:#e3eaf2}
+#contatti a{color:var(--bianco)}
+#contatti .btn{color:var(--notte-900)}
+#contatti .clist .ic{background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--watt-400)}
+#contatti .clist .ic svg{width:20px;height:20px}
+#contatti .btn:focus-visible,#contatti a:focus-visible{outline-color:var(--watt-400)}
+
+/* Footer */
+footer{background:var(--bianco);color:var(--testo-tenue);font-size:1rem}
+footer .logo img{height:40px}
+
+@media (max-width:820px){
+  .hero .nota{left:16px;right:16px;bottom:16px;max-width:none}
+  .hero .ph{border-radius:24px}
+}
+@media (max-width:600px){
+  body{font-size:18px}
+  header.site .wrap{height:64px}
+  .logo img{height:40px}
+  .hero{padding:24px 0 56px}
+  .bill.foglio{display:block!important;padding:18px 16px 12px;font-size:16px}
+  .closing{font-size:1.15rem}
+  .hero .btn{min-height:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Ritocchi dopo la prima verifica */
+h1,h2{text-wrap:balance}
+section.alt .ph{background:var(--bianco)}
+#faq{background:var(--bianco)}
+#bolletta + section .ph.chart svg rect{fill:rgba(255,255,255,.08)}
+#bolletta + section .ph.chart svg text{fill:var(--notte-300)}
